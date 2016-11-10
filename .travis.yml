@@ -3,14 +3,12 @@ os:
   - osx
 language: node_js
 node_js:
-  - "7"
-  - "6"
   - "6.6.0"
-  - "6.5.0"
 install:
   - npm install -g electron-prebuilt
   - npm install -g electron
   - npm install
 script:
   - npm start
+  - electron .
   - electron-packager . FairChair --platform=darwin --arch=x64 --prune —icon=omun.icns
