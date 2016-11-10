@@ -8,6 +8,7 @@ node_js:
   - "6.6.0"
   - "6.5.0"
 install:
+  - npm install -g electron-prebuilt
   - npm install
 script:
   - npm start
