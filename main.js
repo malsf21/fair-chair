@@ -26,4 +26,4 @@ app.on('activate', () => {
     createWindow()
   }
 })
-BrowserWindow({icon:'img/omun.png'});
+//BrowserWindow({icon:'img/omun.png'});
