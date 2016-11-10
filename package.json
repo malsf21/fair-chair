@@ -1,5 +1,14 @@
 {
-  "name"    : "your-app",
-  "version" : "0.1.0",
-  "main"    : "main.js"
+  "name"    : "fair-chair",
+  "version" : "1.0.0",
+  "main"    : "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "license": "GPL-3.0",
+  "author": "Matthew Wang",
+  "repository": "https://github.com/malsf21/fair-chair",
+  "devDependencies": {
+    "electron": "^1.4.5"
+  }
 }

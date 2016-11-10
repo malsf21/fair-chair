@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - "7"
+  - "6"
+install:
+  - npm install
+  - npm install electron-packager -g
+script:
+  - npm start
+  - electron-packager ./ FairChair --platform=darwin --arch=x64 —icon=img/omun.icns

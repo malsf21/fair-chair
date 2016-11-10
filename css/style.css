@@ -5,10 +5,14 @@
 
 html{
   font-size: 1.25rem;
+	width: 100%;
+	height: 100%;
 }
 
 body{
   padding-top: 1em;
+	width: 100%;
+	height: 100%;
 }
 
 .big-time{
@@ -22,4 +26,38 @@ th{
 
 td{
   font-size: 2em;
+}
+
+.padding-top{
+	padding-top: 1em;
+}
+
+
+
+@supports (display:flex){
+  .row-full {
+    display: -webkit-box;
+    display: -mox-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .row-full > [class*='col-'] {
+    display: flex;
+    -webkit-box-flex:1;
+    -moz-box-flex:1;
+    -webkit-flex:1;
+    -ms-flex:1;
+    flex:1;
+    flex-direction: column;
+  }
+}
+
+.well{
+	height: 100%;
+}
+.view-fixed{
+	height: 512px;
+	overflow-y: auto;
 }
