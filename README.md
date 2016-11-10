@@ -1,5 +1,7 @@
 # Fair Chair
 
+[![Build Status](https://travis-ci.org/malsf21/fair-chair.svg?branch=master)](https://travis-ci.org/malsf21/fair-chair)
+
 > Making chairing Model UN conferences easy and fair
 
 Fair Chair is a desktop app that's designed to help chairs keep track of their committee, with a speaker timer, speaker list, and committee notes section. The goal of this app is to be projected on a screen, so all the delegates in the conference can always see what's happening.
