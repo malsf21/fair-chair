@@ -20,6 +20,8 @@ Fair Chair uses [Bootstrap](https://github.com/twbs/bootstrap) as our CSS Framew
 
 ## Development Setup
 
+*Note: Development isn't working properly with travis right now, but you should be able to follow these steps to build it properly. Let me know if there are any problems, on our issue tracker!*
+
 You'll need these things for development:
 
 * Unix-based operating system (if you're running on Windows, find a unix shell and follow these steps)
