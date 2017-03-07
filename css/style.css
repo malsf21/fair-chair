@@ -15,11 +15,6 @@ body{
 	height: 100%;
 }
 
-.big-time{
-  font-size: 5em;
-  text-align: center;
-}
-
 th{
   font-size: 2.5em;
 }
@@ -32,6 +27,29 @@ td{
 	padding-top: 1em;
 }
 
+.footer-title{
+	font-size: 1.5em;
+}
+
+.footer-img{
+	max-width:20%;
+	margin-left:auto;
+}
+
+.time-header{
+	text-align: center;
+	font-size: 2em;
+}
+
+.time-clock{
+  font-size: 5em;
+  text-align: center;
+}
+
+.time-controls{
+	margin-top: 2em;
+	text-align: center;
+}
 
 
 @supports (display:flex){
