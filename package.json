@@ -1,15 +1,16 @@
 {
-  "name"    : "fair-chair",
-  "version" : "0.1.0",
-  "main"    : "main.js",
+  "name": "fair-chair",
+  "version": "0.1.0",
+  "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-packager . FairChair --platform=darwin --arch=x64 --prune —icon=omun.icns"
+    "build": "electron-packager ./dist FairChair --platform=darwin --arch=x64 --prune —icon=omun.icns"
   },
   "license": "GPL-3.0",
   "author": "Matthew Wang",
   "repository": "https://github.com/malsf21/fair-chair",
   "devDependencies": {
+    "electron": "^1.6.2",
     "electron-packager": "^8.2.0",
     "electron-prebuilt": "^1.4.5"
   }
