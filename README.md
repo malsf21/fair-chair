@@ -33,9 +33,9 @@ We'll assume you have node and npm installed.
 
 First, clone this repository:
 
-```git
+```bash
 
-git clone https://github.com/malsf21/fair-chair.git
+$ git clone https://github.com/malsf21/fair-chair.git
 
 ```
 
@@ -43,7 +43,7 @@ Get into the fair-chair directory:
 
 ```bash
 
-cd fair-chair
+$ cd fair-chair
 
 ```
 
@@ -51,7 +51,7 @@ Install our npm dependencies:
 
 ```
 
-npm install
+$ npm install
 
 ```
 
@@ -59,9 +59,10 @@ Then, start our app!
 
 ```
 
-npm start
+$ npm start
 
 ```
+
 
 ### Building a Distribution file
 
@@ -71,17 +72,20 @@ Install electron-packager:
 
 ```
 
-npm install electron-packager -g
+$ npm install electron-packager -g
 
 ```
 
-Then, build for what platform you want. [Electron Packager](https://github.com/electron-userland/electron-packager) has documentation on how to customize your build options. Here's an example:
+Then, build for what platform you want. [Electron Packager](https://github.com/electron-userland/electron-packager) has documentation on how to customize your build options. We also have defaults, `npm run build-osx` and `npm run build-linux`
 
 ```
 
-electron-packager ./ FairChair --platform=darwin --arch=x64
+$ electron-packager ./ FairChair --platform=darwin --arch=x64
+$ npm run build-osx
 
 ```
+
+*Note: Application icons don't work right now. I'm working on it!*
 
 ## Credits
 
