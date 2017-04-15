@@ -11,6 +11,7 @@
   "author": "Matthew Wang",
   "repository": "https://github.com/malsf21/fair-chair",
   "devDependencies": {
+    "electron": "^1.6.2",
     "electron-packager": "^8.2.0",
     "electron-prebuilt": "^1.4.5"
   }
