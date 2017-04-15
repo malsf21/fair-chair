@@ -4,7 +4,7 @@
   "main"    : "main.js",
   "scripts": {
     "start": "electron .",
-    "build-osx": "electron-packager ./ FairChair --platform=darwin --arch=x64 —icon=omun.icns",
+    "build-osx": "electron-packager ./ FairChair --platform=darwin --arch=x64 --icon=omun.icns",
     "build-linux": "electron-packager ./ FairChair --platform=linux --arch=x64"
   },
   "license": "GPL-3.0",

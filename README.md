@@ -1,6 +1,7 @@
 # Fair Chair
 
 [![Build Status](https://travis-ci.org/malsf21/fair-chair.svg?branch=master)](https://travis-ci.org/malsf21/fair-chair)
+[![GitHub Release](https://img.shields.io/github/release/malsf21/fair-chair.svg)](https://github.com/malsf21/fair-chair/releases)
 
 > Making chairing Model UN conferences easy and fair
 
@@ -84,8 +85,6 @@ $ electron-packager ./ FairChair --platform=darwin --arch=x64
 $ npm run build-osx
 
 ```
-
-*Note: Application icons don't work right now. I'm working on it!*
 
 ## Credits
 
