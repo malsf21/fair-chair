@@ -21,8 +21,6 @@ Fair Chair uses [Bootstrap](https://github.com/twbs/bootstrap) as our CSS Framew
 
 ## Development Setup
 
-*Note: Development isn't working properly with travis right now, but you should be able to follow these steps to build it properly. Let me know if there are any problems, on our issue tracker!*
-
 You'll need these things for development:
 
 * Unix-based operating system (if you're running on Windows, find a unix shell and follow these steps)
@@ -35,33 +33,25 @@ We'll assume you have node and npm installed.
 First, clone this repository:
 
 ```bash
-
 $ git clone https://github.com/malsf21/fair-chair.git
-
 ```
 
 Get into the fair-chair directory:
 
 ```bash
-
 $ cd fair-chair
-
 ```
 
 Install our npm dependencies:
 
 ```
-
 $ npm install
-
 ```
 
 Then, start our app!
 
 ```
-
 $ npm start
-
 ```
 
 
@@ -72,18 +62,14 @@ We'll use [Electron Packager](https://github.com/electron-userland/electron-pack
 Install electron-packager:
 
 ```
-
 $ npm install electron-packager -g
-
 ```
 
 Then, build for what platform you want. [Electron Packager](https://github.com/electron-userland/electron-packager) has documentation on how to customize your build options. We also have defaults, `npm run build-osx` and `npm run build-linux`
 
 ```
-
 $ electron-packager ./ FairChair --platform=darwin --arch=x64
 $ npm run build-osx
-
 ```
 
 ## Credits
