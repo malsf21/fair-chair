@@ -1,12 +1,17 @@
 os:
-  - linux
   - osx
+# addons:
+#   apt:
+#     packages:
+#       - xvfb
+# language: node_js
 node_js:
-  - "6.6.0"
+  - "7.4.0"
 install:
+#   - export DISPLAY=':99.0'
+#   - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
   - npm install
   - npm install -g electron
   - npm install -g electron-packager
 script:
-  - npm start
-# - electron-packager . FairChair --platform=darwin --arch=x64 --prune —icon=omun.icns
+  - "npm run build-osx"
