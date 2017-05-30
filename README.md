@@ -1,5 +1,6 @@
 # Fair Chair
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9fad262a10054de880457f8757d74c14)](https://www.codacy.com/app/malsf21/fair-chair?utm_source=github.com&utm_medium=referral&utm_content=malsf21/fair-chair&utm_campaign=badger)
 [![Build Status](https://travis-ci.org/malsf21/fair-chair.svg?branch=master)](https://travis-ci.org/malsf21/fair-chair)
 [![GitHub Release](https://img.shields.io/github/release/malsf21/fair-chair.svg)](https://github.com/malsf21/fair-chair/releases)
 
