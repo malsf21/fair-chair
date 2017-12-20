@@ -1,7 +1,7 @@
 {
-  "name"    : "fair-chair",
-  "version" : "0.2.1",
-  "main"    : "main.js",
+  "name": "fair-chair",
+  "version": "0.2.1",
+  "main": "main.js",
   "scripts": {
     "start": "electron .",
     "build-osx": "electron-packager ./ FairChair --platform=darwin --arch=x64 --icon=omun.icns",
