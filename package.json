@@ -8,11 +8,15 @@
     "build-linux": "electron-packager ./ FairChair --platform=linux --arch=x64"
   },
   "license": "GPL-3.0",
-  "author": "Matthew Wang",
+  "author": {
+    "name" : "Matthew Wang",
+    "email" : "matt@matthewwang.me",
+    "url" : "https://matthewwang.me/"
+  },
   "repository": "https://github.com/malsf21/fair-chair",
   "devDependencies": {
+    "devtron": "^1.4.0",
     "electron": "^1.6.2",
-    "electron-packager": "^8.2.0",
-    "electron-prebuilt": "^1.4.5"
+    "electron-packager": "^8.2.0"
   }
 }
