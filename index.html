@@ -1,206 +1,199 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset="UTF-8">
     <title>Fair Chair</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/materia.min.css" />
     <link rel="stylesheet" href="css/style.css" />
     <script src="js/jquery.min.js"></script>
     <script>
       window.$ = window.jQuery = require('./js/jquery.min.js');
     </script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/fontawesome-all.min.js"></script>
+    <script src="js/app.js"></script>
   </head>
+
   <body>
     <div class="container-fluid">
-      <div class="row row-full">
-        <div class="col-md-6">
-          <div class="well">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="time-header">
-                  Committee Time
-                </div>
-                <div class="time-clock" id="committee-timer">
-                  0:00
-                </div>
-                <div class="row time-input">
-                  <div class="col-md-8">
-                    <input class="form-control" id="committee-time-input" type="text" placeholder="Enter time in minutes:seconds e.g. 10:00"/>
-                  </div>
-                  <div class="col-md-4">
-                    <button class="btn btn-success" id="committee-time-add"><span class="fa fa-plus"></span></button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="time-header">
-                  Speaker Time
-                </div>
-                <div class="time-clock" id="speaker-timer">
-                  0:00
-                </div>
-                <div class="row time-input">
-                  <div class="col-md-8">
-                    <input class="form-control" id="speaker-time-input" type="text" placeholder="Enter time in minutes:seconds e.g. 10:00"/>
-                  </div>
-                  <div class="col-md-4">
-                    <button class="btn btn-success" id="speaker-time-add"><span class="fa fa-plus"></span></button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="time-controls">
-              <button class="btn btn-primary" id="timer-time-toggle"><span class="fa fa-play"></span> / <span class="fa fa-pause"></span></button>
-              <button class="btn btn-danger" id="timer-time-stop"><span class="fa fa-stop"></span></button>
-            </div>
-          </div>
-          <!-- This textarea element is super weird, unfortunately I have to use the style tag here. For whoever is inheriting this code, I apologize. -->
-          <div class="well">
-            <textarea class="form-control" style="font-size: 3em; height:100%;" rows="4" placeholder="Committee Notes"></textarea>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="well">
-            <ul class="nav nav-tabs" role="tablist">
-              <li role="presentation" class="active"><a href="#primary" role="tab" data-toggle="tab">Primary</a></li>
-              <li role="presentation"><a href="#secondary" role="tab" data-toggle="tab">Secondary</a></li>
-              <li role="presentation"><a href="#caucas" role="tab" data-toggle="tab">Caucas</a></li>
-            </ul>
-            <div class="tab-content view-fixed" id="view-fixed">
-              <div role="tabpanel" class="tab-pane active" id="primary">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>
-                        #
-                      </th>
-                      <th>
-                        Delegation
-                      </th>
-                      <th class="text-right">
-                        Actions
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody id="table-primary">
-                    <tr>
-                      <td>
-                        0
-                      </td>
-                      <td>
-                        Add speakers to get started!
-                      </td>
-                      <td class="text-right">
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div class="row">
-                  <div class="col-md-8">
-                    <input class="form-control" type="text" placeholder="Delegation Name" id="input-primary"/>
-                  </div>
-                  <div class="col-md-4">
-                    <button class="btn btn-success" id="add-primary"><span class="fa fa-plus"></span></button>
-                    <button class="btn btn-danger" id="clear-primary">Clear List</button>
-                  </div>
-                </div>
-              </div>
-              <div role="tabpanel" class="tab-pane" id="secondary">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>
-                        #
-                      </th>
-                      <th>
-                        Delegation
-                      </th>
-                      <th class="text-right">
-                        Actions
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody id="table-secondary">
-                    <tr>
-                      <td>
-                        0
-                      </td>
-                      <td>
-                        Add speakers to get started!
-                      </td>
-                      <td class="text-right">
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div class="row">
-                  <div class="col-md-8">
-                    <input class="form-control" type="text" placeholder="Delegation Name" id="input-secondary"/>
-                  </div>
-                  <div class="col-md-4">
-                    <button class="btn btn-success" id="add-secondary"><span class="fa fa-plus"></span></button>
-                    <button class="btn btn-danger" id="clear-secondary">Clear List</button>
-                  </div>
-                </div>
-              </div>
-              <div role="tabpanel" class="tab-pane" id="caucas">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>
-                        #
-                      </th>
-                      <th>
-                        Delegation
-                      </th>
-                      <th class="text-right">
-                        Actions
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody id="table-caucas">
-                    <tr>
-                      <td>
-                        0
-                      </td>
-                      <td>
-                        Add speakers to get started!
-                      </td>
-                      <td class="text-right">
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div class="row">
-                  <div class="col-md-8">
-                    <input class="form-control" type="text" placeholder="Delegation Name" id="input-caucas"/>
-                  </div>
-                  <div class="col-md-4">
-                    <button class="btn btn-success" id="add-caucas"><span class="fa fa-plus"></span></button>
-                    <button class="btn btn-danger" id="clear-caucas">Clear List</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="row">
-        <div class="col-md-6">
-          <div class="footer-title">Fair Chair</div>
-          Developed by <a href="https://github.com/malsf21">Matthew Wang</a> for use at <a href="https://omun.ca">Ontario Model United Nations</a>
+        <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-dark sidebar">
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Overview <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Reports</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Analytics</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Export</a>
+            </li>
+          </ul>
+
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Nav item</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Nav item again</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">One more nav</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Another nav item</a>
+            </li>
+          </ul>
+        </nav>
+
+        <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+          <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor01">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">About</a>
+                </li>
+              </ul>
+              <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </div>
+          </nav>
+
+          <section class="row text-center placeholders">
+            <div class="col-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <div class="text-muted">Something else</div>
+            </div>
+            <div class="col-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+          </section>
+
+          <h2>Section title</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Header</th>
+                  <th>Header</th>
+                  <th>Header</th>
+                  <th>Header</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1,001</td>
+                  <td>Lorem</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>sit</td>
+                </tr>
+                <tr>
+                  <td>1,002</td>
+                  <td>amet</td>
+                  <td>consectetur</td>
+                  <td>adipiscing</td>
+                  <td>elit</td>
+                </tr>
+                <tr>
+                  <td>1,003</td>
+                  <td>Integer</td>
+                  <td>nec</td>
+                  <td>odio</td>
+                  <td>Praesent</td>
+                </tr>
+                <tr>
+                  <td>1,003</td>
+                  <td>libero</td>
+                  <td>Sed</td>
+                  <td>cursus</td>
+                  <td>ante</td>
+                </tr>
+                <tr>
+                  <td>1,004</td>
+                  <td>dapibus</td>
+                  <td>diam</td>
+                  <td>Sed</td>
+                  <td>nisi</td>
+                </tr>
+                <tr>
+                  <td>1,005</td>
+                  <td>Nulla</td>
+                  <td>quis</td>
+                  <td>sem</td>
+                  <td>at</td>
+                </tr>
+                <tr>
+                  <td>1,006</td>
+                  <td>nibh</td>
+                  <td>elementum</td>
+                  <td>imperdiet</td>
+                  <td>Duis</td>
+                </tr>
+                <tr>
+                  <td>1,007</td>
+                  <td>sagittis</td>
+                  <td>ipsum</td>
+                  <td>Praesent</td>
+                  <td>mauris</td>
+                </tr>
+                <tr>
+                  <td>1,012</td>
+                  <td>taciti</td>
+                  <td>sociosqu</td>
+                  <td>ad</td>
+                  <td>litora</td>
+                </tr>
+                <tr>
+                  <td>1,013</td>
+                  <td>torquent</td>
+                  <td>per</td>
+                  <td>conubia</td>
+                  <td>nostra</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <hr /> Developed by <a href="https://github.com/malsf21">Matthew Wang</a> for use at <a href="https://omun.ca">Ontario Model United Nations</a>
           </br>
-          Running node <script>document.write(process.versions.node)</script>,
-          Chrome <script>document.write(process.versions.chrome)</script>,
-          and Electron <script>document.write(process.versions.electron)</script>.
-        </div>
-        <div class="col-md-6">
-          <img class="img-responsive footer-img" src="img/omun.png"/>
-        </div>
+          Running node <script>document.write(process.versions.node)</script>, Chrome <script>document.write(process.versions.chrome)</script>, and Electron <script>document.write(process.versions.electron)</script>.
+        </main>
       </div>
     </div>
-    <script src="js/app.js"></script>
   </body>
+
 </html>
