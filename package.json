@@ -2,7 +2,7 @@
   "name": "fair-chair",
   "productName": "fair-chair",
   "version": "1.0.0",
-  "description": "Fair Chair - making chairing easy.",
+  "description": "Fair Chair - making chairing MUN easy.",
   "main": "src/index.ts",
   "scripts": {
     "start": "electron-forge start",
@@ -24,21 +24,19 @@
           "zip"
         ],
         "linux": [
-          "deb",
-          "rpm"
+          "deb"
         ]
       },
       "electronPackagerConfig": {
-        "packageManager": "yarn"
+        "packageManager": "npm"
       },
       "electronWinstallerConfig": {
         "name": "fair_chair"
       },
       "electronInstallerDebian": {},
-      "electronInstallerRedhat": {},
       "github_repository": {
-        "owner": "",
-        "name": ""
+        "owner": "malsf21",
+        "name": "fair-chair"
       },
       "windowsStoreConfig": {
         "packageName": "",

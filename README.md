@@ -11,6 +11,30 @@ Fair Chair is a desktop app that's designed to help chairs keep track of their c
 
 This README will be updated as more of the app is rewritten. You can download previous versions in the Releases section.
 
+## Quick Dev Notes
+
+This project was created with [Electron Forge](https://github.com/electron-userland/electron-forge/), but was heavily modified - now it uses Angular 5. In order to run, deploy, and publish the project however, the tooling is the same.
+
+To run:
+
+```
+electron-forge start
+```
+
+To make:
+
+```
+electron-forge make
+```
+
+To create a distributable:
+
+```
+electron-forge publish
+```
+
+Currently, the app isn't configured properly for release, but it will be by our 1.0.0.
+
 ## Credits
 
 Fair Chair was made by Matthew Wang (@malsf21) for the [Ontario Model United Nations Conference](https://omun.ca).
