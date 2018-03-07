@@ -8,11 +8,6 @@ body{
 	height: 100%;
 }
 
-.tab-pane {
-	position: relative;
-	height: 100%;
-}
-
 /*
  * Sidebar
  */
@@ -88,6 +83,10 @@ body{
 	height: 60px;
 	padding-top: 10px;
 	background-color: #CCCCCC;
+}
+
+.strikethrough{
+	text-decoration: line-through;
 }
 
 /*
