@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - "7"
+  - "8"
+
+os:
+- linux
+- osx
+
+install:
+  - npm install -g electron-forge
+  - npm install
+
+script:
+  - "electron-forge make"

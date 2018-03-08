@@ -21,16 +21,10 @@ To run:
 electron-forge start
 ```
 
-To make:
+To make distributables:
 
 ```
 electron-forge make
-```
-
-To create a distributable:
-
-```
-electron-forge publish
 ```
 
 Currently, the app isn't configured properly for release, but it will be by our 1.0.0.
