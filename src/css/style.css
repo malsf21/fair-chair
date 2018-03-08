@@ -1,11 +1,13 @@
 html{
 	width: 100%;
 	height: 100%;
+	position: relative;
 }
 
 body{
 	width: 100%;
 	height: 100%;
+	position: relative;
 }
 
 /*
@@ -67,6 +69,14 @@ body{
 /*
  * Main Views
  */
+
+.app-main{
+	width: 100%;
+	height: 100vh;
+	padding-bottom: 5rem;
+	position: relative;
+	overflow-y: auto;
+}
 
 /*
  * List

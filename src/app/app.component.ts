@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ElectronService } from 'ngx-electron';
 
 @Component({
   selector: 'app-root',
@@ -29,10 +30,10 @@ import { Component } from '@angular/core';
           </li>
         </ul>
         <div class="sidebar-footer">
-          <i class="fa fa-fw fa-code"></i> <i class="fa fa-fw fa-heart" style="color:tomato;"></i> <i class="fab fa-fw fa-github"></i> by Matthew Wang
+          <i class="fa fa-fw fa-code"></i> <i class="fa fa-fw fa-heart" style="color:tomato;"></i> <a (click)="openLink('https://github.com/malsf21/fair-chair/')"><i class="fab fa-fw fa-github"></i></a> <span (click)="openLink('https://matthewwang.me')"><u>by Matthew Wang</u></span>
         </div>
       </nav>
-      <main role="main" class="col-sm-10 ml-sm-auto mt-3">
+      <main role="main" class="col-sm-10 ml-sm-auto mt-3 app-main">
         <router-outlet></router-outlet>
       </main>
     </div>
@@ -40,4 +41,10 @@ import { Component } from '@angular/core';
   `
 })
 export class AppComponent {
+  websiteUrl: string;
+  constructor (private electronService: ElectronService){
+  }
+  openLink(link: string){
+    this.electronService.shell.openExternal(link);
+  }
 }

@@ -29,6 +29,40 @@ import { FsService } from 'ngx-fs';
       </div>
     </div>
   </div>
+  <div class="card border-primary mt-2">
+    <div class="card-body">
+      <h1>App Info</h1>
+      <hr />
+      <p>
+        Fair Chair was developed by <a (click)="openLink('https://matthewwang.me/')" href="#">Matthew Wang</a>, a three-time conference chair, computer lover, and professional procrastinator.
+      </p>
+      <p>
+        Fair Chair was made with <a (click)="openLink('https://electronjs.org/')" href="#">Electron</a>, <a (click)="openLink('https://electronforge.io/')" href="#">Electron Forge</a>, <a (click)="openLink('https://angular.io/')" href="#">Angular</a>, <a (click)="openLink('https://getbootstrap.com/')" href="#">Bootstrap</a>, and the <a (click)="openLink('https://bootswatch.com/materia/')" href="#">Materia Bootstrap theme</a>. You can find the full dependency list on the <a (click)="openLink('https://github.com/malsf21/fair-chair/')" href="#">GitHub repo</a>.
+      </p>
+    </div>
+  </div>
+  <ul class="list-group mt-2">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      App Version
+      <span class="badge badge-primary badge-pill">{{ appVersion }}</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      Electron Version
+      <span class="badge badge-primary badge-pill">{{ electronVersion }}</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      Chrome Version
+      <span class="badge badge-primary badge-pill">{{ chromeVersion }}</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      Node Version
+      <span class="badge badge-primary badge-pill">{{ nodeVersion }}</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      App Path
+      <span class="badge badge-primary badge-pill">{{ appPath }}</span>
+    </li>
+  </ul>
   <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
@@ -53,7 +87,18 @@ import { FsService } from 'ngx-fs';
 
 export class SettingsPageComponent {
 
+  appVersion: string;
+  appPath: string;
+  electronVersion: string;
+  chromeVersion: string;
+  nodeVersion: string;
+
   constructor (private electronService: ElectronService, private fsService: FsService){
+    this.appVersion = this.electronService.remote.app.getVersion();
+    this.appPath = this.electronService.remote.app.getAppPath();
+    this.electronVersion = this.electronService.process.versions.electron;
+    this.chromeVersion = this.electronService.process.versions.chrome;
+    this.nodeVersion = this.electronService.process.versions.node;
   }
 
   importList(){
@@ -126,6 +171,10 @@ export class SettingsPageComponent {
     let successNotification = new Notification('All Data Deleted!', {
       body: 'Say your goodbyes, all your data is gone!'
     })
+  }
+
+  openLink(link: string){
+    this.electronService.shell.openExternal(link);
   }
 
 }

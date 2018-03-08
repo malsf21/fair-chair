@@ -1,18 +1,81 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { ElectronService } from 'ngx-electron';
 
 @Component({
   selector: 'page-home',
   template: `
   <div class="jumbotron">
-    <h1 class="display-3">Welcome to Fair Chair</h1>
-    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    <h1 class="display-3">Welcome to Fair Chair!</h1>
+    <p class="lead">A desktop application that makes chairing Model UN committees easy.</p>
     <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
     <p class="lead">
-      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+      <button class="btn btn-primary btn-lg" (click)="toList()">Try it now</button>
+      <button class="btn btn-warning btn-lg" data-toggle="modal" data-target="#learnModal">Learn how it works</button>
     </p>
+  </div>
+  <div class="card-deck">
+    <div class="card border-success">
+      <div class="card-body">
+        <h2 class="card-title text-success"><i class="fa fa-smile"></i> Chairing Made Easy</h2>
+        <p class="card-text">
+          Fair Chair aims to make chairing simple and easy. No more annoyances with sizing and styling Google Docs, no more separate phone timer, no more managing multiple documents; instead, just use Fair Chair's list view that puts everything you need all in one place, and saves all of your lists in the app.
+        </p>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-success" data-toggle="modal" data-target="#learnModal"><i class="fa fa-graduation-cap"></i> Learn more</button>
+      </div>
+    </div>
+    <div class="card border-primary">
+      <div class="card-body">
+        <h2 class="card-title text-primary"><i class="fa fa-gavel"></i> Committees Made Fair</h2>
+        <p class="card-text">
+          Fair Chair also makes judging and participating in committees transparent and fair. You can project the list view to a large screen, and let everybody in the committee know who's on the speaker's list and how much time the current speaker has left. Plus, easily retain previous lists - no more arguing about who the last speaker in the list was!
+        </p>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#learnModal"><i class="fa fa-graduation-cap"></i> Learn more</button>
+      </div>
+    </div>
+    <div class="card border-danger">
+      <div class="card-body">
+        <h2 class="card-title text-danger"><i class="fa fa-heart"></i> Chairs That Care</h2>
+        <p class="card-text">
+          Fair Chair was originally developed by a seasoned committee chair to be used in their committee, and we want to make this an application that you'd use at your conference. We're always looking for your feedback to make Fair Chair better - if you have any questions, suggestions, or concerns, drop an issue on our GitHub repository.
+        </p>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-danger" (click)="openLink('https://github.com/malsf21/fair-chair/')"><i class="fab fa-github"></i> GitHub Repository</button>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="learnModal" tabindex="-1" role="dialog" aria-labelledby="learnModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="learnModalLabel">How Does Fair Chair Work?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Coming soon!
+        </div>
+      </div>
+    </div>
   </div>
   `
 })
 
-export class HomePageComponent { }
+export class HomePageComponent {
+  constructor(private router: Router, private electronService: ElectronService){
+  }
+
+  toList(){
+    this.router.navigate(['/lists-page']);
+  }
+
+  openLink(link: string){
+    this.electronService.shell.openExternal(link);
+  }
+}
