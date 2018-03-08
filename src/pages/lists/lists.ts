@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'page-lists',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
         <div class="col mb-2 text-left">
           <button type="button" class="btn btn-primary"><i class="fa fa-list"></i> Browse Lists</button>
           <button type="button" class="btn btn-success"><i class="fa fa-plus"></i> New List</button>
-          <button type="button" class="btn btn-warning"><i class="fa fa-edit"></i> Edit Current list</button>
+          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i> Edit Current list</button>
         </div>
       <div class="col text-right">
         <h2>{{ currentTime }}</h2>
@@ -67,6 +68,28 @@ import { Component, OnInit } from '@angular/core';
       <input type="text" (keyup.enter)="addDelegate(delegateInput.value)" class="form-control" placeholder="Add delegate..." id="delegateInput" #delegateInput>
     </div>
   </div>
+  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Edit Current List</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="form-group">
+        <label for="title">List Title</label>
+        <input class="form-control" type="text" [(ngModel)]="title" id="title" />
+      </div>
+      <div class="form-group">
+        <label for="timerTimeLimit">Timer Max Time</label>
+        <input class="form-control" type="number" [(ngModel)]="timerTimeLimit" id="timerTimeLimit"/>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
   `
 })
 
@@ -74,7 +97,7 @@ export class ListsPageComponent implements OnInit {
   title: string;
   currentTime: string;
   timerTime: number;
-  timeLimit: number;
+  timerTimeLimit: number;
   timerOn: boolean;
   timerObject: any;
   delegateList: any;
@@ -82,13 +105,18 @@ export class ListsPageComponent implements OnInit {
   constructor (){
     this.title = "Post-Syria Reconstruction";
     this.timerTime = 90;
-    this.timeLimit = 90;
+    this.timerTimeLimit = 90;
     this.timerOn = false;
     this.delegateList = [
       ["China", false],
       ["United States", false],
       ["France", false]
     ]
+  }
+
+  onEditSubmit(f: NgForm) {
+    console.log(f.value);  // { first: '', last: '' }
+    console.log(f.valid);  // false
   }
 
   toggleTimer(){
@@ -113,12 +141,13 @@ export class ListsPageComponent implements OnInit {
 
   resetTimer(){
     this.stopTimer();
-    this.timerTime = this.timeLimit;
+    this.timerTime = this.timerTimeLimit;
   }
-
+  /*
   setTimer(time: number){
-    this.timeLimit = time;
+    this.timerTimeLimit = time;
   }
+  */
 
   calculateTime(){
     let time = new Date()
