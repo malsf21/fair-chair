@@ -33,7 +33,8 @@
         ]
       },
       "electronPackagerConfig": {
-        "packageManager": "npm"
+        "packageManager": "npm",
+        "icon": "src/assets/img/fair-chair.icns"
       },
       "electronWinstallerConfig": {
         "name": "fair_chair"

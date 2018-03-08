@@ -66,6 +66,14 @@ body{
 	font-size: 0.75em;
 }
 
+.sidebar-logo{
+	display: block;
+	max-width: 80%;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 /*
  * Main Views
  */

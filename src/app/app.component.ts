@@ -7,7 +7,8 @@ import { ElectronService } from 'ngx-electron';
   <div class="container-fluid">
     <div class="row">
       <nav class="col-sm-2 d-none d-sm-block bg-dark sidebar">
-        <h1 class="sidebar-title">Fair Chair</h1>
+        <img class="sidebar-logo" src="assets/img/logo.png"/>
+        <h1 class="sidebar-title mt-1">Fair Chair</h1>
         <div class="sidebar-subtitle">
           Making chairing easy.
         </div>
@@ -41,7 +42,6 @@ import { ElectronService } from 'ngx-electron';
   `
 })
 export class AppComponent {
-  websiteUrl: string;
   constructor (private electronService: ElectronService){
   }
   openLink(link: string){

@@ -14,6 +14,7 @@ const createWindow = async () => {
   mainWindow = new BrowserWindow({
     width: 1000,
     height: 800,
+    icon: `file://${__dirname}/assets/img/fair-chair.ico`
   });
 
   // and load the index.html of the app.
