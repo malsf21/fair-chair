@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { NgxElectronModule } from 'ngx-electron';
+import { NgxFsModule } from 'ngx-fs';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +17,8 @@ import { PageNotFoundComponent } from '../pages/not-found/not-found';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    NgxElectronModule,
+    NgxFsModule
   ],
   declarations: [
     AppComponent,
