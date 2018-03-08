@@ -75,6 +75,7 @@ body{
 .list-view{
 	height: 90vh;
 	overflow-y: auto;
+	overflow-x: hidden;
 }
 .list-input-footer {
 	position: fixed;

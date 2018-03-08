@@ -32,7 +32,7 @@ import { Component } from '@angular/core';
           <i class="fa fa-fw fa-code"></i> <i class="fa fa-fw fa-heart" style="color:tomato;"></i> <i class="fab fa-fw fa-github"></i> by Matthew Wang
         </div>
       </nav>
-      <main role="main" class="col-sm-10 ml-sm-auto pt-3">
+      <main role="main" class="col-sm-10 ml-sm-auto mt-3">
         <router-outlet></router-outlet>
       </main>
     </div>
