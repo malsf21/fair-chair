@@ -25,6 +25,11 @@ import { ElectronService } from 'ngx-electron';
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" routerLink="/guide-page" routerLinkActive="active">
+              <i class="fa fa-fw fa-book"></i> Guide
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" routerLink="/settings-page" routerLinkActive="active">
               <i class="fa fa-fw fa-cog"></i> Settings
             </a>

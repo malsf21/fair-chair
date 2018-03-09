@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { HomePageComponent } from '../pages/home/home';
+import { GuidePageComponent } from '../pages/guide/guide';
 import { ListsPageComponent } from '../pages/lists/lists';
 import { SettingsPageComponent } from '../pages/settings/settings';
 import { PageNotFoundComponent } from '../pages/not-found/not-found';
@@ -23,6 +24,7 @@ import { PageNotFoundComponent } from '../pages/not-found/not-found';
   declarations: [
     AppComponent,
     HomePageComponent,
+    GuidePageComponent,
     ListsPageComponent,
     SettingsPageComponent,
     PageNotFoundComponent

@@ -11,7 +11,7 @@ import { ElectronService } from 'ngx-electron';
     <hr class="my-4">
     <p class="lead">
       <button class="btn btn-primary btn-lg" (click)="toList()">Try it now</button>
-      <button class="btn btn-warning btn-lg" data-toggle="modal" data-target="#learnModal">Learn how it works</button>
+      <button class="btn btn-warning btn-lg" (click)="toGuide()">Learn how it works</button>
     </p>
   </div>
   <div class="card-deck">
@@ -23,7 +23,7 @@ import { ElectronService } from 'ngx-electron';
         </p>
       </div>
       <div class="card-footer">
-        <button class="btn btn-success" data-toggle="modal" data-target="#learnModal"><i class="fa fa-graduation-cap"></i> Learn more</button>
+        <button class="btn btn-success" (click)="toGuide()"><i class="fa fa-graduation-cap"></i> Learn more</button>
       </div>
     </div>
     <div class="card border-primary">
@@ -34,7 +34,7 @@ import { ElectronService } from 'ngx-electron';
         </p>
       </div>
       <div class="card-footer">
-        <button class="btn btn-primary" data-toggle="modal" data-target="#learnModal"><i class="fa fa-graduation-cap"></i> Learn more</button>
+        <button class="btn btn-primary" (click)="toGuide()"><i class="fa fa-graduation-cap"></i> Learn more</button>
       </div>
     </div>
     <div class="card border-danger">
@@ -49,26 +49,15 @@ import { ElectronService } from 'ngx-electron';
       </div>
     </div>
   </div>
-  <div class="modal fade" id="learnModal" tabindex="-1" role="dialog" aria-labelledby="learnModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="learnModalLabel">How Does Fair Chair Work?</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          Coming soon!
-        </div>
-      </div>
-    </div>
-  </div>
   `
 })
 
 export class HomePageComponent {
   constructor(private router: Router, private electronService: ElectronService){
+  }
+
+  toGuide(){
+    this.router.navigate(['/guide-page']);
   }
 
   toList(){
