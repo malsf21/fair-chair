@@ -78,10 +78,8 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script>
       $.getJSON("https://api.github.com/repos/malsf21/fair-chair/releases/latest").done(function(release) {
-        console.log(release)
         var macDownloadURL;
         for (item in release.assets){
-          console.log(release.assets[item])
           if (release.assets[item].browser_download_url.slice(-4) == ".dmg"){
             macDownloadURL = release.assets[item].browser_download_url;
             break;
