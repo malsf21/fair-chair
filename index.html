@@ -80,7 +80,7 @@
       $.getJSON("https://api.github.com/repos/malsf21/fair-chair/releases/latest").done(function(release) {
         var macDownloadURL;
         for (item in release.assets){
-          if (release.assets[item].browser_download_url.slice(-4) == ".dmg"){
+          if (release.assets[item].browser_download_url.slice(-4) == ".zip" && release.assets[item].browser_download_url.indexOf("darwin") !== -1){
             macDownloadURL = release.assets[item].browser_download_url;
             break;
           }
