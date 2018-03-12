@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { ElectronService } from 'ngx-electron';
 
@@ -23,7 +23,7 @@ import { ElectronService } from 'ngx-electron';
         </p>
       </div>
       <div class="card-footer">
-        <button class="btn btn-success" (click)="toGuide()"><i class="fa fa-graduation-cap"></i> Learn more</button>
+        <button class="btn btn-success" (click)="toList()"><i class="fa fa-arrow-right"></i> Try Now</button>
       </div>
     </div>
     <div class="card border-primary">
@@ -53,15 +53,39 @@ import { ElectronService } from 'ngx-electron';
 })
 
 export class HomePageComponent {
-  constructor(private router: Router, private electronService: ElectronService){
+  constructor(private router: Router, private electronService: ElectronService, private zone: NgZone){
+    this.electronService.ipcRenderer.on('to-home', (event: any) => {
+      console.log(event);
+      this.toHome();
+    });
+    this.electronService.ipcRenderer.on('to-lists', (event: any) => {
+      console.log(event);
+      this.toList();
+    });
+    this.electronService.ipcRenderer.on('to-guide', (event: any) => {
+      console.log(event);
+      this.toGuide();
+    });
+    this.electronService.ipcRenderer.on('to-settings', (event: any) => {
+      console.log(event);
+      this.toSettings();
+    });
   }
 
-  toGuide(){
-    this.router.navigate(['/guide-page']);
+  toHome(){
+    this.zone.run(() => this.router.navigate(['/home-page']));
   }
 
   toList(){
-    this.router.navigate(['/lists-page']);
+    this.zone.run(() => this.router.navigate(['/lists-page']));
+  }
+
+  toGuide(){
+    this.zone.run(() => this.router.navigate(['/guide-page']));
+  }
+
+  toSettings(){
+    this.zone.run(() => this.router.navigate(['/settings-page']));
   }
 
   openLink(link: string){

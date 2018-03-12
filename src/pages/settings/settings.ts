@@ -99,6 +99,16 @@ export class SettingsPageComponent {
     this.electronVersion = this.electronService.process.versions.electron;
     this.chromeVersion = this.electronService.process.versions.chrome;
     this.nodeVersion = this.electronService.process.versions.node;
+
+    this.electronService.ipcRenderer.on('export-savefile', (event: any) => {
+      console.log(event);
+      this.exportList();
+    });
+
+    this.electronService.ipcRenderer.on('import-savefile', (event: any) => {
+      console.log(event);
+      this.importList();
+    });
   }
 
   importList(){

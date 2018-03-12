@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, Menu } from 'electron';
 //import { enableLiveReload } from 'electron-compile';
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -39,7 +39,11 @@ const createWindow = async () => {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow);
+app.on('ready', () => {
+  createWindow();
+  const menu = Menu.buildFromTemplate(template)
+  Menu.setApplicationMenu(menu)
+});
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
@@ -60,3 +64,144 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
+
+// This is the menu generation code
+let template: any;
+template = [
+  {
+    label: 'File',
+    submenu: [
+      {
+        label: 'Import Savefile',
+        click () {
+          mainWindow.webContents.send('to-settings');
+          mainWindow.webContents.send('import-savefile');
+        }
+      },
+      {
+        label: 'Export Savefile',
+        click () {
+          mainWindow.webContents.send('to-settings');
+          mainWindow.webContents.send('export-savefile');
+        }
+      }
+    ]
+  },
+  {
+    label: 'Edit',
+    submenu: [
+      {role: 'undo'},
+      {role: 'redo'},
+      {type: 'separator'},
+      {role: 'cut'},
+      {role: 'copy'},
+      {role: 'paste'},
+      {role: 'pasteandmatchstyle'},
+      {role: 'delete'},
+      {role: 'selectall'}
+    ]
+  },
+  {
+    label: 'View',
+    submenu: [
+      {role: 'reload'},
+      {role: 'forcereload'},
+      {role: 'toggledevtools'},
+      {type: 'separator'},
+      {role: 'resetzoom'},
+      {role: 'zoomin'},
+      {role: 'zoomout'},
+      {type: 'separator'},
+      {role: 'togglefullscreen'}
+    ]
+  },
+  {
+    label: 'Go',
+    submenu: [
+      {
+        label: 'Home',
+        click () {
+          mainWindow.webContents.send('to-home');
+        }
+      },
+      {
+        label: 'Lists',
+        click () {
+          mainWindow.webContents.send('to-lists');
+        }
+      },
+      {
+        label: 'Guide',
+        click () {
+          mainWindow.webContents.send('to-guide');
+        }
+      },
+      {
+        label: 'Settings',
+        click () {
+          mainWindow.webContents.send('to-settings');
+        }
+      },
+    ]
+  },
+  {
+    role: 'window',
+    submenu: [
+      {role: 'minimize'},
+      {role: 'close'}
+    ]
+  },
+  {
+    role: 'help',
+    submenu: [
+      {
+        label: 'Learn More',
+        click () { require('electron').shell.openExternal('https://electronjs.org') }
+      },
+      {
+        label: 'GitHub Repository',
+        click () { require('electron').shell.openExternal('https://github.com/malsf21/fair-chair/') }
+      }
+    ]
+  }
+]
+
+if (process.platform === 'darwin') {
+  // "App" Menu
+
+  template.unshift({
+    label: app.getName(),
+    submenu: [
+      {role: 'about'},
+      {type: 'separator'},
+      {role: 'services', submenu: []},
+      {type: 'separator'},
+      {role: 'hide'},
+      {role: 'hideothers'},
+      {role: 'unhide'},
+      {type: 'separator'},
+      {role: 'quit'}
+    ]
+  })
+
+  // Edit menu
+  template[1].submenu.push(
+    {type: 'separator'},
+    {
+      label: 'Speech',
+      submenu: [
+        {role: 'startspeaking'},
+        {role: 'stopspeaking'}
+      ]
+    }
+  )
+
+  // Window menu
+  template[3].submenu = [
+    {role: 'close'},
+    {role: 'minimize'},
+    {role: 'zoom'},
+    {type: 'separator'},
+    {role: 'front'}
+  ]
+}
