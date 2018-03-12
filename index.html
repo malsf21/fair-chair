@@ -93,9 +93,15 @@
           timeAgo = "less than an hour ago";
         }
         else if (dateDiff < oneDay) {
-          timeAgo = (dateDiff / oneHour).toFixed(1) + " hours ago";
+          var temp = Math.floor(dateDiff / oneHour);
+          if (temp == 1){
+            timeAgo = "an hour ago";
+          }
+          else{
+            timeAgo = temp + " hours ago";
+          }
         } else {
-          timeAgo = (dateDiff / oneDay).toFixed(1) + " days ago";
+          timeAgo = Math.floor(dateDiff / oneDay) + " days ago";
         }
         var releaseInfo = release.tag_name + " released " + timeAgo + "." ;
         $("#mac-download").attr("href", macDownloadURL);
