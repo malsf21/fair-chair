@@ -74,6 +74,14 @@ body{
 	margin-right: auto;
 }
 
+.sidebar-toggle-button{
+	position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0.5em;
+  z-index: 1000;
+}
+
 /*
  * Main Views
  */

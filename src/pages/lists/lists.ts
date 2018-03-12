@@ -40,7 +40,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
     </div>
 
     <div class="table-responsive">
-      <table class="table table-striped">
+      <table class="table table-striped fa-2x">
         <thead>
           <tr>
             <th>#</th>

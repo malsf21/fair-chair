@@ -6,7 +6,7 @@ import { ElectronService } from 'ngx-electron';
   template: `
   <div class="container-fluid">
     <div class="row">
-      <nav class="col-sm-2 d-none d-sm-block bg-dark sidebar">
+      <nav [hidden]="!showSidebar" class="col-2 bg-dark sidebar">
         <img class="sidebar-logo" src="assets/img/logo.png"/>
         <h1 class="sidebar-title mt-1">Fair Chair</h1>
         <div class="sidebar-subtitle">
@@ -39,7 +39,11 @@ import { ElectronService } from 'ngx-electron';
           <i class="fa fa-fw fa-code"></i> <i class="fa fa-fw fa-heart" style="color:tomato;"></i> <a (click)="openLink('https://github.com/malsf21/fair-chair/')"><i class="fab fa-fw fa-github"></i></a> <span (click)="openLink('https://matthewwang.me')"><u>by Matthew Wang</u></span>
         </div>
       </nav>
-      <main role="main" class="col-sm-10 ml-sm-auto mt-3 app-main">
+      <main role="main" [ngClass]="{'col-10': showSidebar, 'col-12': !showSidebar }" class="ml-auto mt-3 app-main">
+      <a class="sidebar-toggle-button" (click)="toggleSidebar()">
+        <div [hidden]="!showSidebar"><i class="fa fa-2x fa-caret-left" style="color:white;"></i></div>
+        <div [hidden]="showSidebar"><i class="fa fa-2x fa-caret-right"></i></div>
+      </a>
         <router-outlet></router-outlet>
       </main>
     </div>
@@ -47,7 +51,12 @@ import { ElectronService } from 'ngx-electron';
   `
 })
 export class AppComponent {
+  showSidebar: boolean;
   constructor (private electronService: ElectronService){
+    this.showSidebar = true;
+  }
+  toggleSidebar(){
+    this.showSidebar = !this.showSidebar;
   }
   openLink(link: string){
     this.electronService.shell.openExternal(link);
