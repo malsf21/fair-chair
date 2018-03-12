@@ -13,9 +13,9 @@
   },
   "keywords": [],
   "author": {
-    "name" : "Matthew Wang",
-    "email" : "matt@matthewwang.me",
-    "url" : "https://matthewwang.me/"
+    "name": "Matthew Wang",
+    "email": "matt@matthewwang.me",
+    "url": "https://matthewwang.me/"
   },
   "repository": "https://github.com/malsf21/fair-chair",
   "license": "MIT",
