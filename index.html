@@ -100,8 +100,15 @@
           else{
             timeAgo = temp + " hours ago";
           }
-        } else {
-          timeAgo = Math.floor(dateDiff / oneDay) + " days ago";
+        }
+        else {
+          var temp = Math.floor(dateDiff / oneDay);
+          if (temp == 1){
+            timeAgo = "a day ago";
+          }
+          else {
+            timeAgo = temp + " days ago";
+          }
         }
         var releaseInfo = release.tag_name + " released " + timeAgo + "." ;
         $("#mac-download").attr("href", macDownloadURL);
