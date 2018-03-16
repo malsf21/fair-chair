@@ -186,6 +186,7 @@ export class ListsPageComponent implements OnInit,OnDestroy {
     }
     this.timerTime = this.timerTimeLimit
     this.timerOn = false;
+    this.timerAudio = new Audio('./assets/sounds/timer-up.mp3');
   }
 
   addList(id?: number){
@@ -271,6 +272,7 @@ export class ListsPageComponent implements OnInit,OnDestroy {
   startTimer() {
     this.timerObject = setInterval(() => {
       if (this.timerTime == 0){
+        this.timerAudio.play();
         this.stopTimer();
       }
       else{
