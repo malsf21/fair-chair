@@ -19,7 +19,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
         <div class="card border-secondary mb-2">
           <div class="card-body text-center">
             <div class="text-center pt-3 pb-3">
-              <div class="text-muted">Topic</div>
               <h1 class="display-4">{{ title }}</h1>
             </div>
           </div>
@@ -49,9 +48,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let delegate of delegateList; let i = index" [ngClass]="{'strikethrough': delegate[1]}">
-            <td>{{ i + 1 }}</td>
-            <td>{{ delegate[0] }}</td>
+          <tr *ngFor="let delegate of delegateList; let i = index">
+            <td [ngClass]="{'strikethrough': delegate[1]}">{{ i + 1 }}</td>
+            <td [ngClass]="{'strikethrough': delegate[1]}">{{ delegate[0] }}</td>
             <td class="text-right">
               <button class="btn btn-success btn-sm" (click)="strikeDelegate(i)"><i class="fa fa-strikethrough"></i></button>
               <button class="btn btn-danger btn-sm" (click)="removeDelegate(i)"><i class="fa fa-times"></i></button>
@@ -168,6 +167,7 @@ export class ListsPageComponent implements OnInit,OnDestroy {
   delegateList: any;
   newTitle: string;
   newTimerTimeLimit: number;
+  timerAudio: any;
 
   constructor (){
     this.newTitle = "Sample Caucas Topic";
@@ -270,7 +270,12 @@ export class ListsPageComponent implements OnInit,OnDestroy {
 
   startTimer() {
     this.timerObject = setInterval(() => {
-      this.timerTime --;
+      if (this.timerTime == 0){
+        this.stopTimer();
+      }
+      else{
+        this.timerTime --;
+      }
     }, 1000);
     this.timerOn = true;
   }
