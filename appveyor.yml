@@ -1,0 +1,16 @@
+platform:
+  - x64
+
+install:
+  - ps: Install-Product node 7 x64
+  - npm install -g electron-forge
+  - npm install
+
+build_script:
+  - npm run make
+
+test: off
+
+# environment:
+#   GH_TOKEN:
+#     secure:
