@@ -1,10 +1,6 @@
 language: node_js
-node_js:
-  - 7
-  - 8
 
 os:
-# - linux
   - osx
 
 install:
@@ -13,7 +9,8 @@ install:
 
 jobs:
   include:
-    - stage: make
+    - stage: test
+      node_js: 8
       script: npm run make
     - stage: deploy
       if: branch = stable
