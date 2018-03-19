@@ -12,4 +12,5 @@ install:
   - npm install
 
 script:
-  - "electron-forge make"
+  - "npm run make"
+  - "npm run publish"

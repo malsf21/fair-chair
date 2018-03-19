@@ -1,7 +1,6 @@
 # Fair Chair
 
-[![Build Status](https://travis-ci.org/malsf21/fair-chair.svg?branch=master)](https://travis-ci.org/malsf21/fair-chair)
-[![GitHub Release](https://img.shields.io/github/release/malsf21/fair-chair.svg)](https://github.com/malsf21/fair-chair/releases)
+[![Travis Build Status](https://travis-ci.org/malsf21/fair-chair.svg?branch=master)](https://travis-ci.org/malsf21/fair-chair) [![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/2q0ww0thsc2qlc3h?svg=true)](https://ci.appveyor.com/project/malsf21/fair-chair) [![GitHub Release](https://img.shields.io/github/release/malsf21/fair-chair.svg)](https://github.com/malsf21/fair-chair/releases)
 
 > Making chairing Model UN conferences easy and fair
 
