@@ -17,4 +17,5 @@ jobs:
       script: npm run make
     - stage: deploy
       if: branch = stable
+      node_js: 8
       script: npm run publish
