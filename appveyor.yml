@@ -6,12 +6,17 @@ install:
   - npm install -g electron-forge
   - npm install
 
-build_script:
-  - npm run make
-  - npm run publish
+-
+  branches:
+    only:
+      - stable
+
+  configuration: Release
+  build_script:
+    - npm run publish
+-
+  configuration: Debug
+  build_script:
+    - npm run make
 
 test: off
-
-# environment:
-#   GH_TOKEN:
-#     secure:

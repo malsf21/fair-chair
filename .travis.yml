@@ -1,7 +1,7 @@
 language: node_js
 node_js:
-  - "7"
-  - "8"
+  - 7
+  - 8
 
 os:
 # - linux
@@ -11,6 +11,10 @@ install:
   - npm install -g electron-forge
   - npm install
 
-script:
-  - "npm run make"
-  - "npm run publish"
+jobs:
+  include:
+    - stage: test
+      script: npm run make
+    - stage: deploy
+      if: branch = stable
+      script: npm run publish
