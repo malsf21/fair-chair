@@ -43,35 +43,43 @@
     <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
 
     <style>
-      html, body {
-        height:100%;
-      }
       body {
-        display:flex;
-        align-items:center;
         color: #FFFFFF;
+        padding-top: 6em;
+      }
+      @keyframes slideIn {
+        from {
+          transform: translate3d(0, -25%, 0);
+          visibility: visible;
+        }
+
+        to {
+          transform: translate3d(0, 0, 0);
+        }
+      }
+      .cover-image{
+        max-width: 75%;
+        animation-name: slideIn;
+        animation-duration: 1.25s;
+        animation-fill-mode: both;
       }
     </style>
   </head>
 
   <body class="bg-dark">
     <div class="container">
-      <div class="row align-self-center">
-        <div class="col-md-6">
-          <img class="img-fluid d-block mx-auto" src="img/macbook-screen.png" alt="A picture of Fair Chair in action!"/>
+      <img class="img-fluid d-block mx-auto cover-image" src="img/macbook-screen.png" alt="A picture of Fair Chair in action!"/>
+      <div class="text-center">
+        <h1 class="display-4">Fair Chair</h1>
+        <div class="fa-2x">
+          Latest Release: <span class="badge badge-primary" id="latest-release">finding...</span>
         </div>
-        <div class="col-md-6">
-          <div class="text-center text-md-left">
-            <h1 class="display-4">Fair Chair</h1>
-            <div class="h2">MUN Chairing, Fair and Easy</div>
-            <p class="mt-1" id="release-info"></p>
-            <div class="py-3">
-              <a class="btn btn-primary" href="https://github.com/malsf21/fair-chair/releases/latest"  id="mac-download"><i class="fab fa-apple"></i> Download for Mac</a>
-              <a class="btn btn-secondary" href="https://github.com/malsf21/fair-chair/"><i class="fab fa-github"></i> View on GitHub</a>
-            </div>
-            <span>Made by <a href="https://matthewwang.me">Matthew Wang</a></span>
-          </p>
+        <div class="py-3">
+          <a class="btn btn-primary mt-1" href="https://github.com/malsf21/fair-chair/releases/latest"  id="windows-download"><i class="fab fa-fw fa-windows"></i> Download for Windows</a>
+          <a class="btn btn-primary mt-1" href="https://github.com/malsf21/fair-chair/releases/latest"  id="mac-download"><i class="fab fa-fw fa-apple"></i> Download for Mac</a>
+          <a class="btn btn-secondary mt-1" href="https://github.com/malsf21/fair-chair/"><i class="fab fa-fw fa-github"></i> View on GitHub</a>
         </div>
+        Made with <i class="fa fa-fw fa-code"></i> <i class="fa fa-fw fa-heart" style="color:tomato;"></i> <i class="fab fa-fw fa-github"></i> by <a href="https://matthewwang.me">Matthew Wang</a>
       </div>
     </div>
     <script src="js/jquery.min.js"></script>
@@ -79,12 +87,16 @@
     <script>
       $.getJSON("https://api.github.com/repos/malsf21/fair-chair/releases/latest").done(function(release) {
         var macDownloadURL;
+        var windowsDownloadURL;
         for (item in release.assets){
           if (release.assets[item].browser_download_url.slice(-4) == ".zip" && release.assets[item].browser_download_url.indexOf("darwin") !== -1){
             macDownloadURL = release.assets[item].browser_download_url;
-            break;
+          }
+          else if (release.assets[item].browser_download_url.slice(-4) == ".exe" && release.assets[item].browser_download_url.indexOf("windows") !== -1){
+            windowsDownloadURL = release.assets[item].browser_download_url;
           }
         }
+        /*
         var oneHour = 60 * 60 * 1000;
         var oneDay = 24 * oneHour;
         var dateDiff = new Date() - new Date(release.published_at);
@@ -111,8 +123,10 @@
           }
         }
         var releaseInfo = release.tag_name + " released " + timeAgo + "." ;
+        */
         $("#mac-download").attr("href", macDownloadURL);
-        $("#release-info").text(releaseInfo);
+        $("#windows-download").attr("href", windowsDownloadURL);
+        $("#latest-release").text(release.tag_name);
       });
     </script>
   </body>
