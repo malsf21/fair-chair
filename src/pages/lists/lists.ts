@@ -115,12 +115,16 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
         <div class="modal-body">
           <div class="form-group">
             <label for="title">List Title</label>
-            <input class="form-control" type="text" [(ngModel)]="title" id="title" />
+            <input class="form-control" type="text" [(ngModel)]="newTitle" id="title" />
           </div>
           <div class="form-group">
             <label for="timerTimeLimit">Timer Max Time</label>
-            <input class="form-control" type="number" [(ngModel)]="timerTimeLimit" id="timerTimeLimit"/>
+            <input class="form-control" type="number" [(ngModel)]="newTimerTimeLimit" id="timerTimeLimit"/>
           </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="updateList()">Save Changes</button>
         </div>
       </div>
     </div>
@@ -146,7 +150,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="createList()">Save changes</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="createList()">Create List</button>
         </div>
       </div>
     </div>
@@ -221,10 +225,22 @@ export class ListsPageComponent implements OnInit,OnDestroy {
   }
 
   createList(){
-    this.title = this.newTitle;
-    this.timerTimeLimit = this.newTimerTimeLimit;
     this.delegateList = [];
+    this.title = this.newTitle;
+    if (this.newTimerTimeLimit <= 1){
+      this.newTimerTimeLimit = 30;
+    }
+    this.timerTimeLimit = this.newTimerTimeLimit;
     this.switchToList(this.addList());
+  }
+
+  updateList(){
+    this.title = this.newTitle;
+    if (this.newTimerTimeLimit <= 1){
+      this.newTimerTimeLimit = 30;
+    }
+    this.timerTimeLimit = this.newTimerTimeLimit;
+    this.switchToList(this.addList(this.listId));
   }
 
   switchToList(id: number){
@@ -236,6 +252,8 @@ export class ListsPageComponent implements OnInit,OnDestroy {
     let currentListArr = this.totalListArr[this.listId];
     this.title = currentListArr["title"];
     this.timerTimeLimit = currentListArr["timerTimeLimit"];
+    this.newTitle = this.title;
+    this.newTimerTimeLimit = this.timerTimeLimit;
     this.delegateList = currentListArr["delegateList"];
     this.resetTimer();
   }
