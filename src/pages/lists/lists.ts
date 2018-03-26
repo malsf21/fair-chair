@@ -5,18 +5,18 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   template: `
   <div class="list-view">
     <div class="row">
-        <div class="col mb-2 text-left">
+        <div class="col-9 mb-2 text-left">
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#browseModal"><i class="fa fa-list"></i> Browse</button>
           <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i> Edit</button>
           <button type="button" class="btn btn-success" data-toggle="modal" data-target="#newModal"><i class="fa fa-plus"></i> New</button>
         </div>
-      <div class="col text-right">
+      <div class="col-3 text-right">
         <h2>{{ currentTime }}</h2>
       </div>
     </div>
     <div class="row">
       <div class="col-9">
-        <div class="card border-secondary mb-2">
+        <div class="card mb-2">
           <div class="card-body text-center">
             <div class="text-center pt-3 pb-3">
               <h1 class="display-4">{{ title }}</h1>
@@ -25,20 +25,20 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
         </div>
       </div>
       <div class="col">
-        <div class="card border-secondary mb-2">
+        <div class="card mb-2">
           <div class="card-body text-center">
             <h1 class="display-4">{{ timerTime }}s</h1>
             <button type="button" class="btn" [ngClass]="{'btn-success': !timerOn, 'btn-warning': timerOn }" (click)="toggleTimer()">
-            <span [hidden]="timerOn"><i class="fa fa-play"></i> Start</span>
-            <span [hidden]="!timerOn"><i class="fa fa-pause"></i> Pause</span>
+            <span [hidden]="timerOn"><i class="fa fa-play"></i></span>
+            <span [hidden]="!timerOn"><i class="fa fa-pause"></i></span>
             </button>
-            <button type="button" class="btn btn-danger" (click)="resetTimer()"><i class="fa fa-redo"></i> Reset</button>
+            <button type="button" class="btn btn-danger" (click)="resetTimer()"><i class="fa fa-redo"></i></button>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="table-responsive">
+    <div class="table-responsive list-table">
       <table class="table table-striped fa-2x">
         <thead>
           <tr>
@@ -115,12 +115,16 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
         <div class="modal-body">
           <div class="form-group">
             <label for="title">List Title</label>
-            <input class="form-control" type="text" [(ngModel)]="title" id="title" />
+            <input class="form-control" type="text" [(ngModel)]="newTitle" id="title" />
           </div>
           <div class="form-group">
             <label for="timerTimeLimit">Timer Max Time</label>
-            <input class="form-control" type="number" [(ngModel)]="timerTimeLimit" id="timerTimeLimit"/>
+            <input class="form-control" type="number" [(ngModel)]="newTimerTimeLimit" id="timerTimeLimit"/>
           </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="updateList()">Save Changes</button>
         </div>
       </div>
     </div>
@@ -146,7 +150,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="createList()">Save changes</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="createList()">Create List</button>
         </div>
       </div>
     </div>
@@ -221,10 +225,22 @@ export class ListsPageComponent implements OnInit,OnDestroy {
   }
 
   createList(){
-    this.title = this.newTitle;
-    this.timerTimeLimit = this.newTimerTimeLimit;
     this.delegateList = [];
+    this.title = this.newTitle;
+    if (this.newTimerTimeLimit <= 1){
+      this.newTimerTimeLimit = 30;
+    }
+    this.timerTimeLimit = this.newTimerTimeLimit;
     this.switchToList(this.addList());
+  }
+
+  updateList(){
+    this.title = this.newTitle;
+    if (this.newTimerTimeLimit <= 1){
+      this.newTimerTimeLimit = 30;
+    }
+    this.timerTimeLimit = this.newTimerTimeLimit;
+    this.switchToList(this.addList(this.listId));
   }
 
   switchToList(id: number){
@@ -236,6 +252,8 @@ export class ListsPageComponent implements OnInit,OnDestroy {
     let currentListArr = this.totalListArr[this.listId];
     this.title = currentListArr["title"];
     this.timerTimeLimit = currentListArr["timerTimeLimit"];
+    this.newTitle = this.title;
+    this.newTimerTimeLimit = this.timerTimeLimit;
     this.delegateList = currentListArr["delegateList"];
     this.resetTimer();
   }
