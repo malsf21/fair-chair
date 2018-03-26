@@ -1,7 +1,7 @@
 {
   "name": "fair-chair",
   "productName": "Fair Chair",
-  "version": "1.0.0-rc1",
+  "version": "1.0.0-rc2",
   "description": "Fair Chair, a desktop application that making chairing Model United Nations committees easy.",
   "main": "src/index.ts",
   "scripts": {
