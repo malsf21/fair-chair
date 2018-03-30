@@ -1,7 +1,7 @@
 {
   "name": "fair-chair",
   "productName": "Fair Chair",
-  "version": "1.0.0-rc2",
+  "version": "1.0.0",
   "description": "Fair Chair, a desktop application that making chairing Model United Nations committees easy.",
   "main": "src/index.ts",
   "scripts": {
@@ -34,7 +34,10 @@
       },
       "electronPackagerConfig": {
         "packageManager": "npm",
-        "icon": "src/assets/img/fair-chair.icns"
+        "icon": "src/assets/img/fair-chair.icns",
+        "ignore": ".+.o$",
+        "appBundleId": "me.matthewwang.fair-chair",
+        "helperBundleId": "me.matthewwang.fair-chair.helper"
       },
       "electronWinstallerConfig": {
         "name": "fair_chair"

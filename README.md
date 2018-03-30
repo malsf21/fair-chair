@@ -4,30 +4,64 @@
 
 > Making chairing Model UN conferences easy and fair
 
-**NOTE: FAIR CHAIR IS UNDERGOING A HEAVY REWRITE**
+Fair Chair is a desktop app that's designed to make chairing easy and fair. At its core, it's just a glorified table, but the many subtle features it has makes it a prime choice for chairing. It features a robust list manager (saves the states of several lists automatically), coordinates the timer state with each individual list, and has many simple one-button interactions that make life easy.
 
-Fair Chair is a desktop app that's designed to help chairs keep track of their committee, with a speaker timer, speaker list, and committee notes section. The goal of this app is to be projected on a screen, so all the delegates in the conference can always see what's happening.
+From a technical perspective, Fair Chair is an [Electron](https://electronjs.org/) app that utilizes [Angular](https://angular.io) via [Electron Forge](https://electronforge.io), and also uses the [Materia Bootstrap Theme](https://bootswatch.com/materia/) and [Font Awesome](https://fontawesome.com/) to make things pretty.
 
-This README will be updated as more of the app is rewritten. You can download previous versions in the Releases section.
+## Development Setup
 
-## Quick Dev Notes
+This project is an Angular 5 flavour of the [Electron Forge](https://github.com/electron-userland/electron-forge/) template - as such, you can use any of Electron Forge's default commands to run, build, and package the project.
 
-This project was created with [Electron Forge](https://github.com/electron-userland/electron-forge/), but was heavily modified - now it uses Angular 5. In order to run, deploy, and publish the project however, the tooling is the same.
+First, install the Electron Forge CLI
 
-To run:
-
-```
-electron-forge start
+```bash
+$ npm install -g electron-forge
 ```
 
-To make distributables:
+Then, clone this repo and install all the npm dependencies:
+
+```bash
+$ git clone https://github.com/malsf21/fair-chair.git
+$ cd fair-chair
+$ npm install
+```
+
+To simply start a local instance of the app, you can use the `electron-forge start` command. Note that I've disabled livereload for this app.
+
+```bash
+$ electron-forge start
+```
+
+To make a distributable for the current platform, you can use
 
 ```
-electron-forge make
+$ electron-forge make
 ```
 
-Currently, the app isn't configured properly for release, but it will be by our 1.0.0.
+You can configure how make operates in the `package.json`, or check out the [documentation for the command](https://electronforge.io/cli/make).
 
-## Credits
+## Continuous Integration and Deployment
 
-Fair Chair was made by Matthew Wang (@malsf21) for the [Ontario Model United Nations Conference](https://omun.ca).
+Deploying an Electron app, especially to a production build, is an arduous task! To help us, I use two continuous integration services, [Travis](https://travis-ci.org) and [AppVeyor](https://appveyor.com). On every push to `master`, Travis and AppVeyor run `electron-forge make` on virtual machines (OSX and Windows respectively), to ensure that `master` has a working build. In addition, on every push to `stable`, Travis and AppVeyor also run `electron-forge publish`, which sends the distributables to GitHub. After I check them over, they get published.
+
+This can be easily replicated in a fork of this repository - the default Travis and AppVeyor tasks work out of the box. However, to deploy to GitHub using Travis and AppVeyor, one needs to set the environment variable `GITHUB_TOKEN` to a valid [GitHub Personal Access Token](https://github.com/settings/tokens).
+
+## Publishing to the Mac App Store
+
+Publishing the app to the Mac App Store is another similarly arduous task. It requires enrollment in the [Apple Developer Program](https://developer.apple.com/programs/), which costs money, and also requires a special build of the application and specific certificates and other security information.
+
+Firstly, we need to package the app in a different way.
+
+```
+$ electron-forge package --platform=mas 
+```
+
+More coming soon...
+
+## Licensing and Credits
+
+If you want to simply use this application, go on right ahead! It's free and open source, so you can use it for whatever you like. If you want to use it for your conference, I encourage you to do so!
+
+This project is released under the MIT License, which means that you're allowed to do anything with this code (as long as you preserve the copyright and license information). I would greatly prefer if you gave me a shoutout as well, but it's not required. Ideally, it looks something like this:
+
+> Fair Chair was a project originally created by Matthew Wang (@malsf21)/(https://matthewwang.me)

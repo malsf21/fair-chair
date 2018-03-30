@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { ElectronService } from 'ngx-electron';
 
 @Component({
   selector: 'page-guide',
   template: `
     <h1>Fair Chair Guide</h1>
     <p>
-      This page is your guide to using Fair Chair - it details every nook and cranny of the app. Click on each category to expand its information.
+      This page is your guide to using Fair Chair - it details every nook and cranny of the app. Click on each category to expand its information. If you have a question or concern that is not covered here, <a (click)="openLink('https://github.com/malsf21/fair-chair/issues')" href="#">submit an issue on our GitHub repository</a>.
     </p>
     <div *ngFor="let guide of guideObject; let i = index" class="card border-primary mt-1">
       <a data-toggle="collapse" href="#collapse-{{i}}">
@@ -28,7 +29,7 @@ import { Component } from '@angular/core';
 
 export class GuidePageComponent {
   guideObject: any;
-  constructor(){
+  constructor(private electronService: ElectronService){
     this.guideObject = [
       {
         title: "The Basics",
@@ -71,5 +72,8 @@ export class GuidePageComponent {
         ]
       }
     ]
+  }
+  openLink(link: string){
+    this.electronService.shell.openExternal(link);
   }
 }
