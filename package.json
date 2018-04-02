@@ -37,7 +37,8 @@
         "icon": "src/assets/img/fair-chair.icns",
         "ignore": ".+.o$",
         "appBundleId": "me.matthewwang.fair-chair",
-        "helperBundleId": "me.matthewwang.fair-chair.helper"
+        "helperBundleId": "me.matthewwang.fair-chair.helper",
+        "buildVersion": "1.0.2"
       },
       "electronWinstallerConfig": {
         "name": "fair_chair"
@@ -64,7 +65,7 @@
     "@angular/platform-browser-dynamic": "^5.2.8",
     "@angular/router": "^5.2.8",
     "core-js": "^2.4.1",
-    "electron": "^1.8.2",
+    "electron": "^1.8.4",
     "electron-compile": "^6.4.2",
     "electron-devtools-installer": "^2.1.0",
     "electron-squirrel-startup": "^1.0.0",
@@ -80,7 +81,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "electron-forge": "^5.1.1",
-    "electron-prebuilt-compile": "1.8.2",
+    "electron-prebuilt-compile": "1.8.4",
     "tslint": "^4.2.0",
     "typescript": "~2.1.4"
   }
