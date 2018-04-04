@@ -37,7 +37,7 @@ import { FsService } from 'ngx-fs';
         Fair Chair was developed by <a (click)="openLink('https://matthewwang.me/')" href="#">Matthew Wang</a>, a three-time conference chair, computer lover, and professional procrastinator. It was originally developed for <a (click)="openLink('https://omun.ca/')" href="#">Ontario Model United Nations</a>.
       </p>
       <p>
-        Fair Chair was made with <a (click)="openLink('https://electronjs.org/')" href="#">Electron</a>, <a (click)="openLink('https://electronforge.io/')" href="#">Electron Forge</a>, <a (click)="openLink('https://angular.io/')" href="#">Angular</a>, <a (click)="openLink('https://getbootstrap.com/')" href="#">Bootstrap</a>, and the <a (click)="openLink('https://bootswatch.com/materia/')" href="#">Materia Bootstrap theme</a>. You can find the full dependency list on the <a (click)="openLink('https://github.com/malsf21/fair-chair/')" href="#">GitHub repo</a>.
+        Fair Chair was made with <a (click)="openLink('https://electronjs.org/')" href="#">Electron</a>, <a (click)="openLink('https://electronforge.io/')" href="#">Electron Forge</a>, <a (click)="openLink('https://angular.io/')" href="#">Angular</a>, <a (click)="openLink('https://getbootstrap.com/')" href="#">Bootstrap</a>, and the <a (click)="openLink('https://bootswatch.com/materia/')" href="#">Materia Bootstrap theme</a>. You can find the full dependency list and learn more about how Fair Chair was made on the <a (click)="openLink('https://github.com/malsf21/fair-chair/')" href="#">GitHub repo</a>.
       </p>
     </div>
   </div>
