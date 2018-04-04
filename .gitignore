@@ -2,3 +2,5 @@ node_modules
 out
 entitlements.plist
 *.provisionprofile
+*.dmg
+*.zip
