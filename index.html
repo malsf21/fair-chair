@@ -63,6 +63,9 @@
         animation-duration: 1.25s;
         animation-fill-mode: both;
       }
+      #latest-release{
+        text-decoration: underline;
+      }
     </style>
   </head>
 
@@ -72,25 +75,35 @@
       <div class="text-center">
         <h1 class="display-4">Fair Chair</h1>
         <div class="fa-2x">
-          Latest Release: <span class="badge badge-primary" id="latest-release">finding...</span>
+          Latest Release: <a href="https://github.com/malsf21/fair-chair/releases/latest"><span class="badge badge-primary" id="latest-release">finding...</span></a>
         </div>
         <div class="py-3">
-          <a class="btn btn-primary mt-1" href="https://github.com/malsf21/fair-chair/releases/latest"  id="windows-download"><i class="fab fa-fw fa-windows"></i> Download for Windows</a>
-          <a class="btn btn-primary mt-1" href="https://github.com/malsf21/fair-chair/releases/latest"  id="mac-download"><i class="fab fa-fw fa-apple"></i> Download for Mac</a>
-          <a class="btn btn-secondary mt-1" href="https://github.com/malsf21/fair-chair/"><i class="fab fa-fw fa-github"></i> View on GitHub</a>
+          <a class="btn btn-primary mt-1" href="https://itunes.apple.com/us/app/fair-chair/id1365686846" rel="noopener" target="_blank"><i class="fab fa-fw fa-apple"></i> Downlod from Mac App Store</a>
+          <a class="btn btn-primary mt-1" href="https://github.com/malsf21/fair-chair/releases/latest"  id="windows-download" rel="noopener"><i class="fab fa-fw fa-windows"></i> Download for Windows</a>
+          <hr style="border-top:solid 1px white;" />
+          <a class="btn btn-secondary mt-1" href="https://github.com/malsf21/fair-chair/" rel="noopener" target="_blank"><i class="fab fa-fw fa-github"></i> View on GitHub</a>
+          <p class="mt-1">
+            or download a <a href="https://github.com/malsf21/fair-chair/releases/latest" id="mac-dmg-download" rel="noopener">DMG</a> or <a href="https://github.com/malsf21/fair-chair/releases/latest" id="mac-zip-download" rel="noopener">ZIP</a> for OSX
+          </p>
         </div>
-        Made with <i class="fa fa-fw fa-code"></i> <i class="fa fa-fw fa-heart" style="color:tomato;"></i> <i class="fab fa-fw fa-github"></i> by <a href="https://matthewwang.me">Matthew Wang</a>
+        Made with <i class="fa fa-fw fa-code"></i> <i class="fa fa-fw fa-heart" style="color:tomato;"></i> <i class="fab fa-fw fa-github"></i> by <a href="https://matthewwang.me" rel="noopener" target="_blank">Matthew Wang</a>
       </div>
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script>
       $.getJSON("https://api.github.com/repos/malsf21/fair-chair/releases/latest").done(function(release) {
-        var macDownloadURL;
+        var macDMGDownloadURL;
+        var macZipDownloadURL;
         var windowsDownloadURL;
         for (item in release.assets){
-          if (release.assets[item].browser_download_url.slice(-4) == ".zip" && release.assets[item].browser_download_url.indexOf("darwin") !== -1){
-            macDownloadURL = release.assets[item].browser_download_url;
+          if ( release.assets[item].browser_download_url.indexOf("darwin") !== -1){
+            if (release.assets[item].browser_download_url.slice(-4) == ".dmg"){
+              macDMGDownloadURL = release.assets[item].browser_download_url;
+            }
+            else if (release.assets[item].browser_download_url.slice(-4) == ".zip") {
+              macZipDownloadURL = release.assets[item].browser_download_url;
+            }
           }
           else if (release.assets[item].browser_download_url.slice(-4) == ".exe" && release.assets[item].browser_download_url.indexOf("windows") !== -1){
             windowsDownloadURL = release.assets[item].browser_download_url;
@@ -124,7 +137,8 @@
         }
         var releaseInfo = release.tag_name + " released " + timeAgo + "." ;
         */
-        $("#mac-download").attr("href", macDownloadURL);
+        $("#mac-dmg-download").attr("href", macDMGDownloadURL);
+        $("#mac-zip-download").attr("href", macZipDownloadURL);
         $("#windows-download").attr("href", windowsDownloadURL);
         $("#latest-release").text(release.tag_name);
       });
