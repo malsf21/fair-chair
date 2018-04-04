@@ -46,11 +46,17 @@ app.on('ready', () => {
 app.on('window-all-closed', () => {
   // On OS X it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
+
+  // Disabled because it causes problems with the toolbar
+
+  //if (process.platform !== 'darwin') {
+  app.quit();
+  //}
 });
 
+
+// Disabled because it causes problems with the toolbar
+/*
 app.on('activate', () => {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
@@ -58,6 +64,7 @@ app.on('activate', () => {
     createWindow();
   }
 });
+*/
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
@@ -70,14 +77,14 @@ template = [
     submenu: [
       {
         label: 'Import Savefile',
-        click () {
+        click() {
           mainWindow.webContents.send('to-settings');
           mainWindow.webContents.send('import-savefile');
         }
       },
       {
         label: 'Export Savefile',
-        click () {
+        click() {
           mainWindow.webContents.send('to-settings');
           mainWindow.webContents.send('export-savefile');
         }
@@ -87,29 +94,29 @@ template = [
   {
     label: 'Edit',
     submenu: [
-      {role: 'undo'},
-      {role: 'redo'},
-      {type: 'separator'},
-      {role: 'cut'},
-      {role: 'copy'},
-      {role: 'paste'},
-      {role: 'pasteandmatchstyle'},
-      {role: 'delete'},
-      {role: 'selectall'}
+      { role: 'undo' },
+      { role: 'redo' },
+      { type: 'separator' },
+      { role: 'cut' },
+      { role: 'copy' },
+      { role: 'paste' },
+      { role: 'pasteandmatchstyle' },
+      { role: 'delete' },
+      { role: 'selectall' }
     ]
   },
   {
     label: 'View',
     submenu: [
-      {role: 'reload'},
-      {role: 'forcereload'},
-      {role: 'toggledevtools'},
-      {type: 'separator'},
-      {role: 'resetzoom'},
-      {role: 'zoomin'},
-      {role: 'zoomout'},
-      {type: 'separator'},
-      {role: 'togglefullscreen'}
+      { role: 'reload' },
+      { role: 'forcereload' },
+      { role: 'toggledevtools' },
+      { type: 'separator' },
+      { role: 'resetzoom' },
+      { role: 'zoomin' },
+      { role: 'zoomout' },
+      { type: 'separator' },
+      { role: 'togglefullscreen' }
     ]
   },
   {
@@ -117,25 +124,25 @@ template = [
     submenu: [
       {
         label: 'Home',
-        click () {
+        click() {
           mainWindow.webContents.send('to-home');
         }
       },
       {
         label: 'Lists',
-        click () {
+        click() {
           mainWindow.webContents.send('to-lists');
         }
       },
       {
         label: 'Guide',
-        click () {
+        click() {
           mainWindow.webContents.send('to-guide');
         }
       },
       {
         label: 'Settings',
-        click () {
+        click() {
           mainWindow.webContents.send('to-settings');
         }
       },
@@ -144,8 +151,8 @@ template = [
   {
     role: 'window',
     submenu: [
-      {role: 'minimize'},
-      {role: 'close'}
+      { role: 'minimize' },
+      { role: 'close' }
     ]
   },
   {
@@ -153,11 +160,11 @@ template = [
     submenu: [
       {
         label: 'Learn More',
-        click () { require('electron').shell.openExternal('https://electronjs.org') }
+        click() { require('electron').shell.openExternal('https://electronjs.org') }
       },
       {
         label: 'GitHub Repository',
-        click () { require('electron').shell.openExternal('https://github.com/malsf21/fair-chair/') }
+        click() { require('electron').shell.openExternal('https://github.com/malsf21/fair-chair/') }
       }
     ]
   }
@@ -169,36 +176,36 @@ if (process.platform === 'darwin') {
   template.unshift({
     label: app.getName(),
     submenu: [
-      {role: 'about'},
-      {type: 'separator'},
-      {role: 'services', submenu: []},
-      {type: 'separator'},
-      {role: 'hide'},
-      {role: 'hideothers'},
-      {role: 'unhide'},
-      {type: 'separator'},
-      {role: 'quit'}
+      { role: 'about' },
+      { type: 'separator' },
+      { role: 'services', submenu: [] },
+      { type: 'separator' },
+      { role: 'hide' },
+      { role: 'hideothers' },
+      { role: 'unhide' },
+      { type: 'separator' },
+      { role: 'quit' }
     ]
   })
 
   // Edit menu
   template[1].submenu.push(
-    {type: 'separator'},
+    { type: 'separator' },
     {
       label: 'Speech',
       submenu: [
-        {role: 'startspeaking'},
-        {role: 'stopspeaking'}
+        { role: 'startspeaking' },
+        { role: 'stopspeaking' }
       ]
     }
   )
 
   // Window menu
   template[3].submenu = [
-    {role: 'close'},
-    {role: 'minimize'},
-    {role: 'zoom'},
-    {type: 'separator'},
-    {role: 'front'}
+    { role: 'close' },
+    { role: 'minimize' },
+    { role: 'zoom' },
+    { type: 'separator' },
+    { role: 'front' }
   ]
 }
