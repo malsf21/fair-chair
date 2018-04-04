@@ -97,6 +97,8 @@ This should create a `.pkg` file. Open Application Loader, target the `.pkg`, an
 
 ## Licensing and Credits
 
+*All credit for the dependencies that Fair Chair was built on go to their developers. The Fair Chair icon was taken from [this SVGRepo page](https://www.svgrepo.com/svg/60798/gavel) under the NonCommercial Creative Commons License.*
+
 If you want to simply use this application, go on right ahead! It's free and open source, so you can use it for whatever you like. If you want to use it for your conference, I encourage you to do so!
 
 This project is released under the MIT License, which means that you're allowed to do anything with this code (as long as you preserve the copyright and license information). I would greatly prefer if you gave me a shoutout as well, but it's not required. Ideally, it looks something like this:
