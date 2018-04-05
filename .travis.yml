@@ -12,6 +12,7 @@ jobs:
     - stage: test
       node_js: 8
       script: npm run make
+      script: npm run make-mas
     - stage: deploy
       if: branch = stable
       node_js: 8
