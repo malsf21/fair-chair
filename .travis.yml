@@ -6,12 +6,19 @@ notifications:
 language: node_js
 node_js: 8
 
-os:
-  - osx
-  - linux
 
 install:
   - npm install
+
+matrix:
+  include:
+  - os: osx
+    script:
+      - npm run make
+      - npm run make-mas
+  - os: linux
+    script:
+      - npm run make
 
 jobs:
   include:
