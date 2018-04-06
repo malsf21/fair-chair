@@ -1,7 +1,13 @@
+notifications:
+  email:
+    on_success: never
+    on_failure: change
+
 language: node_js
 
 os:
   - osx
+  - linux
 
 install:
   - npm install -g electron-forge
@@ -15,5 +21,6 @@ jobs:
       script: npm run make-mas
     - stage: deploy
       if: branch = stable
+      os: osx
       node_js: 8
       script: npm run publish
