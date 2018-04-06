@@ -3,6 +3,8 @@ notifications:
     on_success: never
     on_failure: change
 
+os: osx
+
 language: node_js
 node_js: 8
 
@@ -10,24 +12,20 @@ node_js: 8
 install:
   - npm install
 
-matrix:
-  include:
-  - os: osx
-    script:
-      - npm run make
-      - npm run make-mas
-  - os: linux
-    script:
-      - npm run make
+stages:
+  - test
+  - name: deploy
+    if: branch = stable
 
 jobs:
   include:
     - stage: test
       node_js: 8
       script: npm run make
+    - # this next job runs w/ test
+      node_js: 8
       script: npm run make-mas
     - stage: deploy
       if: branch = stable
-      os: osx
       node_js: 8
       script: npm run publish
