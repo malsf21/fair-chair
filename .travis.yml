@@ -10,7 +10,6 @@ os:
   - linux
 
 install:
-  - npm install -g electron-forge
   - npm install
 
 jobs:
