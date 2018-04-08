@@ -44,7 +44,11 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
           <tr>
             <th>#</th>
             <th>Delegate</th>
-            <th class="text-right">Actions (<a href="javascript:void(0);" (click)="clearAll()">clear all</a>)</th>
+            <th class="text-right">
+              <button class="btn btn-warning btn-sm" (click)="unstrikeAllDelegates()"><i class="fa fa-ban"></i></button>
+              <button class="btn btn-success btn-sm" (click)="strikeAllDelegates()"><i class="fa fa-strikethrough"></i></button>
+              <button class="btn btn-danger btn-sm" (click)="removeAllDelegates()"><i class="fa fa-times"></i></button>
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -333,12 +337,26 @@ export class ListsPageComponent implements OnInit,OnDestroy {
     this.addList(this.listId)
   }
 
+  strikeAllDelegates(){
+    for (let i = 0; i < this.delegateList.length; i++){
+      this.delegateList[i][1] = 1;
+    }
+    this.addList(this.listId)
+  }
+
+  unstrikeAllDelegates(){
+    for (let i = 0; i < this.delegateList.length; i++){
+      this.delegateList[i][1] = 0;
+    }
+    this.addList(this.listId)
+  }
+
   removeDelegate(delegateId: number){
     this.delegateList.splice(delegateId, 1)
     this.addList(this.listId)
   }
 
-  clearAll(){
+  removeAllDelegates(){
     this.delegateList = []
     this.addList(this.listId)
   }
