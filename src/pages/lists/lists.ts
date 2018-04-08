@@ -232,6 +232,9 @@ export class ListsPageComponent implements OnInit,OnDestroy {
 
   createList(){
     this.delegateList = [];
+    if (this.newTitle.replace(/ /g,'') === ""){
+      this.newTitle = "Title";
+    }
     this.title = this.newTitle;
     if (this.newTimerTimeLimit <= 1){
       this.newTimerTimeLimit = 30;
@@ -241,6 +244,9 @@ export class ListsPageComponent implements OnInit,OnDestroy {
   }
 
   updateList(){
+    if (this.newTitle.replace(/ /g,'') === ""){
+      this.newTitle = "Title";
+    }
     this.title = this.newTitle;
     if (this.newTimerTimeLimit <= 1){
       this.newTimerTimeLimit = 30;
