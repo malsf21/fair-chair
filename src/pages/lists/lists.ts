@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+declare var $:JQueryStatic;
 
 @Component({
   selector: 'page-lists',
