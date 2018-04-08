@@ -1,17 +1,30 @@
-language: node_js
+notifications:
+  email:
+    on_success: never
+    on_failure: change
 
-os:
-  - osx
+os: osx
+
+language: node_js
+node_js: 8
+
 
 install:
-  - npm install -g electron-forge
   - npm install
+
+stages:
+  - test
+  - name: deploy
+    if: branch = stable
 
 jobs:
   include:
     - stage: test
       node_js: 8
       script: npm run make
+    - # this next job runs w/ test
+      node_js: 8
+      script: npm run make-mas
     - stage: deploy
       if: branch = stable
       node_js: 8

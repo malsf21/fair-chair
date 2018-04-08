@@ -44,7 +44,11 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
           <tr>
             <th>#</th>
             <th>Delegate</th>
-            <th class="text-right">Actions</th>
+            <th class="text-right">
+              <button class="btn btn-warning btn-sm" (click)="unstrikeAllDelegates()"><i class="fa fa-ban"></i></button>
+              <button class="btn btn-success btn-sm" (click)="strikeAllDelegates()"><i class="fa fa-strikethrough"></i></button>
+              <button class="btn btn-danger btn-sm" (click)="removeAllDelegates()"><i class="fa fa-times"></i></button>
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -63,7 +67,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   <div class="list-input-footer row">
     <div class="input-group">
       <div class="input-group-addon"><i class="fa fa-user"></i></div>
-      <input type="text" (keyup.enter)="addDelegate(delegateInput.value)" class="form-control" placeholder="Add delegate..." id="delegateInput" #delegateInput>
+      <input type="text" (keyup.enter)="addDelegate(delegateInput.value)" class="form-control list-input-text" placeholder="Add delegate..." id="delegateInput" #delegateInput>
     </div>
   </div>
   <div class="modal fade" id="browseModal" tabindex="-1" role="dialog" aria-labelledby="browseModalLabel" aria-hidden="true">
@@ -112,20 +116,22 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="title">List Title</label>
-            <input class="form-control" type="text" [(ngModel)]="newTitle" id="title" />
+        <form #f="ngForm" (ngSubmit)="updateList()">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="title">List Title</label>
+              <input class="form-control" type="text" name="newTitle" [(ngModel)]="newTitle" id="title" />
+            </div>
+            <div class="form-group">
+              <label for="timerTimeLimit">Timer Max Time</label>
+              <input class="form-control" type="number" name="newTimerTimeLimit" [(ngModel)]="newTimerTimeLimit" id="timerTimeLimit"/>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="timerTimeLimit">Timer Max Time</label>
-            <input class="form-control" type="number" [(ngModel)]="newTimerTimeLimit" id="timerTimeLimit"/>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-success">Save Changes</button>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="updateList()">Save Changes</button>
-        </div>
+        </form>
       </div>
     </div>
   </div>
@@ -226,6 +232,9 @@ export class ListsPageComponent implements OnInit,OnDestroy {
 
   createList(){
     this.delegateList = [];
+    if (this.newTitle.replace(/ /g,'') === ""){
+      this.newTitle = "Title";
+    }
     this.title = this.newTitle;
     if (this.newTimerTimeLimit <= 1){
       this.newTimerTimeLimit = 30;
@@ -235,12 +244,16 @@ export class ListsPageComponent implements OnInit,OnDestroy {
   }
 
   updateList(){
+    if (this.newTitle.replace(/ /g,'') === ""){
+      this.newTitle = "Title";
+    }
     this.title = this.newTitle;
     if (this.newTimerTimeLimit <= 1){
       this.newTimerTimeLimit = 30;
     }
     this.timerTimeLimit = this.newTimerTimeLimit;
     this.switchToList(this.addList(this.listId));
+    $("#editModal").modal("hide");
   }
 
   switchToList(id: number){
@@ -324,7 +337,7 @@ export class ListsPageComponent implements OnInit,OnDestroy {
     if (delegate.replace(/ /g,'') != ""){
       this.delegateList.push([delegate, false])
     }
-    (<HTMLInputElement>document.getElementById("delegateInput")).value = "";
+    $("#delegateInput").val("");
     this.addList(this.listId)
   }
 
@@ -333,8 +346,27 @@ export class ListsPageComponent implements OnInit,OnDestroy {
     this.addList(this.listId)
   }
 
+  strikeAllDelegates(){
+    for (let i = 0; i < this.delegateList.length; i++){
+      this.delegateList[i][1] = 1;
+    }
+    this.addList(this.listId)
+  }
+
+  unstrikeAllDelegates(){
+    for (let i = 0; i < this.delegateList.length; i++){
+      this.delegateList[i][1] = 0;
+    }
+    this.addList(this.listId)
+  }
+
   removeDelegate(delegateId: number){
     this.delegateList.splice(delegateId, 1)
+    this.addList(this.listId)
+  }
+
+  removeAllDelegates(){
+    this.delegateList = []
     this.addList(this.listId)
   }
 
