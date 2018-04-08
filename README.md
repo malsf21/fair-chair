@@ -1,5 +1,7 @@
 # Fair Chair
 
+[![Join the chat at https://gitter.im/fair-chair/Lobby](https://badges.gitter.im/fair-chair/Lobby.svg)](https://gitter.im/fair-chair/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Travis Build Status](https://travis-ci.org/malsf21/fair-chair.svg?branch=master)](https://travis-ci.org/malsf21/fair-chair) [![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/2q0ww0thsc2qlc3h?svg=true)](https://ci.appveyor.com/project/malsf21/fair-chair) [![GitHub Release](https://img.shields.io/github/release/malsf21/fair-chair.svg)](https://github.com/malsf21/fair-chair/releases)
 [![iTunes App Store Link](https://img.shields.io/itunes/v/1365686846.svg)](https://itunes.apple.com/us/app/fair-chair/id1365686846)
 
