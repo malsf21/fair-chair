@@ -112,20 +112,22 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="title">List Title</label>
-            <input class="form-control" type="text" [(ngModel)]="newTitle" id="title" />
+        <form #f="ngForm" (ngSubmit)="updateList()">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="title">List Title</label>
+              <input class="form-control" type="text" name="newTitle" [(ngModel)]="newTitle" id="title" />
+            </div>
+            <div class="form-group">
+              <label for="timerTimeLimit">Timer Max Time</label>
+              <input class="form-control" type="number" name="newTimerTimeLimit" [(ngModel)]="newTimerTimeLimit" id="timerTimeLimit"/>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="timerTimeLimit">Timer Max Time</label>
-            <input class="form-control" type="number" [(ngModel)]="newTimerTimeLimit" id="timerTimeLimit"/>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-success">Save Changes</button>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="updateList()">Save Changes</button>
-        </div>
+        </form>
       </div>
     </div>
   </div>
@@ -241,6 +243,7 @@ export class ListsPageComponent implements OnInit,OnDestroy {
     }
     this.timerTimeLimit = this.newTimerTimeLimit;
     this.switchToList(this.addList(this.listId));
+    $("#editModal").modal("hide");
   }
 
   switchToList(id: number){
@@ -324,7 +327,7 @@ export class ListsPageComponent implements OnInit,OnDestroy {
     if (delegate.replace(/ /g,'') != ""){
       this.delegateList.push([delegate, false])
     }
-    (<HTMLInputElement>document.getElementById("delegateInput")).value = "";
+    $("#delegateInput").val("");
     this.addList(this.listId)
   }
 
