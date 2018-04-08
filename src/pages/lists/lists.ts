@@ -44,7 +44,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
           <tr>
             <th>#</th>
             <th>Delegate</th>
-            <th class="text-right">Actions</th>
+            <th class="text-right">Actions (<a href="javascript:void(0);" (click)="clearAll()">clear all</a>)</th>
           </tr>
         </thead>
         <tbody>
@@ -335,6 +335,11 @@ export class ListsPageComponent implements OnInit,OnDestroy {
 
   removeDelegate(delegateId: number){
     this.delegateList.splice(delegateId, 1)
+    this.addList(this.listId)
+  }
+
+  clearAll(){
+    this.delegateList = []
     this.addList(this.listId)
   }
 
