@@ -67,7 +67,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   <div class="list-input-footer row">
     <div class="input-group">
       <div class="input-group-addon"><i class="fa fa-user"></i></div>
-      <input type="text" (keyup.enter)="addDelegate(delegateInput.value)" class="form-control" placeholder="Add delegate..." id="delegateInput" #delegateInput>
+      <input type="text" (keyup.enter)="addDelegate(delegateInput.value)" class="form-control list-input-text" placeholder="Add delegate..." id="delegateInput" #delegateInput>
     </div>
   </div>
   <div class="modal fade" id="browseModal" tabindex="-1" role="dialog" aria-labelledby="browseModalLabel" aria-hidden="true">

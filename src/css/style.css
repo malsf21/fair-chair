@@ -1,13 +1,13 @@
-html{
-	width: 100%;
-	height: 100%;
-	position: relative;
+html {
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
-body{
-	width: 100%;
-	height: 100%;
-	position: relative;
+body {
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
 /*
@@ -18,46 +18,46 @@ body{
   padding: 20px 0;
   overflow-x: hidden;
   overflow-y: hidden;
-	color: #EEEEEE;
+  color: #EEEEEE;
 }
 
-.sidebar-nav{
-	font-size: 1.5em;
+.sidebar-nav {
+  font-size: 1.5em;
 }
 
 .sidebar .nav-item {
   width: 100%;
 }
 
-.sidebar .nav-item + .nav-item {
+.sidebar .nav-item+.nav-item {
   margin-left: 0;
 }
 
 .sidebar .nav-link {
   border-radius: 0;
-	color:#EEEEEE;
+  color: #EEEEEE;
 }
 
 .sidebar-footer {
-	position: absolute;
-	bottom: 1em;
-	width: 100%;
-	height: 3em;
-	text-align: center;
-	padding: 0 0.25em 0 0.25em;
-	font-size: 0.75em;
+  position: absolute;
+  bottom: 1em;
+  width: 100%;
+  height: 3em;
+  text-align: center;
+  padding: 0 0.25em 0 0.25em;
+  font-size: 0.75em;
 }
 
-.sidebar-logo{
-	display: block;
-	max-width: 80%;
-	height: auto;
-	margin-left: auto;
-	margin-right: auto;
+.sidebar-logo {
+  display: block;
+  max-width: 80%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.sidebar-toggle-button{
-	position: fixed;
+.sidebar-toggle-button {
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0.5em;
@@ -68,39 +68,46 @@ body{
  * Main Views
  */
 
-.app-main{
-	width: 100%;
-	height: 100vh;
-	padding-bottom: 5rem;
-	overflow-y: auto;
+.app-main {
+  width: 100%;
+  height: 100vh;
+  padding-bottom: 5rem;
+  overflow-y: auto;
 }
 
 /*
  * List
  */
 
-.list-view{
-	padding: 0 1em 2em 1em;
-	overflow-x: hidden;
-	overflow-y: hidden;
+.list-view {
+  padding: 0 1em 2em 1em;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
-.list-table{
-	max-height: 60vh;
-	overflow-x: auto;
-	overflow-y: scroll;
+.list-table {
+  max-height: 60vh;
+  overflow-x: auto;
+  overflow-y: scroll;
 }
-
 
 .list-input-footer {
-	position: fixed;
-	bottom: 0;
-	width: 100%;
-	height: 60px;
-	padding-top: 10px;
-	background-color: #CCCCCC;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  padding-top: 10px;
+  background-color: #CCCCCC;
 }
 
-.strikethrough{
-	text-decoration: line-through;
+.list-input-text {
+  color: #000000;
+}
+
+.list-input-text:focus {
+  color: #000000;
+}
+
+.strikethrough {
+  text-decoration: line-through;
 }
