@@ -39,7 +39,7 @@
         "ignore": ".+.o$",
         "appBundleId": "me.matthewwang.fair-chair",
         "helperBundleId": "me.matthewwang.fair-chair.helper",
-        "buildVersion": "1.0.0"
+        "buildVersion": "1.0.100"
       },
       "electronWinstallerConfig": {
         "name": "fair_chair"
