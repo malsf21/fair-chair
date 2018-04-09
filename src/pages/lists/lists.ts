@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars, no-undef */
+
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
@@ -187,10 +189,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
     </div>
   </div>
   `
-})
+  })
 
-export class ListsPageComponent implements OnInit,OnDestroy {
-
+export class ListsPageComponent implements OnInit, OnDestroy {
   listId: any;
   totalListArr: any;
   title: string;
@@ -204,148 +205,143 @@ export class ListsPageComponent implements OnInit,OnDestroy {
   newTimerTimeLimit: number;
   timerAudio: any;
 
-  constructor (){
-    this.newTitle = "Sample Caucas Topic";
-    this.newTimerTimeLimit = 30;
-    if (!localStorage["currentId"]){
-      console.log("No current list, found, generating sample")
+  constructor () {
+    this.newTitle = 'Sample Caucas Topic'
+    this.newTimerTimeLimit = 30
+    if (!localStorage['currentId']) {
+      console.log('No current list, found, generating sample')
       this.delegateList = [
-        ["China", false],
-        ["United States", false],
-        ["France", false]
+        ['China', false],
+        ['United States', false],
+        ['France', false]
       ]
       this.createList()
-    }
-    else{
-      this.switchToList(localStorage["currentId"])
+    } else {
+      this.switchToList(localStorage['currentId'])
     }
     this.timerTime = this.timerTimeLimit
-    this.timerOn = false;
-    this.timerAudio = new Audio('./assets/sounds/timer-up.mp3');
+    this.timerOn = false
+    this.timerAudio = new Audio('./assets/sounds/timer-up.mp3')
   }
 
-  addList(id?: number){
-    let tempListArr;
-    let listId;
-    let construct;
+  addList (id?: number) {
+    let tempListArr
+    let listId
+    let construct
 
-    if (localStorage["listArr"]){
-      tempListArr = JSON.parse(localStorage["listArr"])
-    }
-    else{
+    if (localStorage['listArr']) {
+      tempListArr = JSON.parse(localStorage['listArr'])
+    } else {
       tempListArr = []
     }
 
     construct = {
-      "title": this.title,
-      "timerTimeLimit": this.timerTimeLimit,
-      "delegateList": this.delegateList
+      'title': this.title,
+      'timerTimeLimit': this.timerTimeLimit,
+      'delegateList': this.delegateList
     }
 
-    if (id){
-      listId = id;
-      tempListArr[id] = construct;
-    }
-    else{
-      listId = tempListArr.length;
+    if (id) {
+      listId = id
+      tempListArr[id] = construct
+    } else {
+      listId = tempListArr.length
       tempListArr.push(construct)
     }
     console.log(tempListArr)
-    localStorage.setItem("listArr",JSON.stringify(tempListArr))
-    return listId;
+    localStorage.setItem('listArr', JSON.stringify(tempListArr))
+    return listId
   }
 
-  createList(){
-    this.delegateList = [];
-    if (this.newTitle.replace(/ /g,'') === ""){
-      this.newTitle = "Title";
+  createList () {
+    this.delegateList = []
+    if (this.newTitle.replace(/ /g, '') === '') {
+      this.newTitle = 'Title'
     }
-    this.title = this.newTitle;
-    if (this.newTimerTimeLimit <= 1){
-      this.newTimerTimeLimit = 30;
+    this.title = this.newTitle
+    if (this.newTimerTimeLimit <= 1) {
+      this.newTimerTimeLimit = 30
     }
-    this.timerTimeLimit = this.newTimerTimeLimit;
-    this.switchToList(this.addList());
+    this.timerTimeLimit = this.newTimerTimeLimit
+    this.switchToList(this.addList())
   }
 
-  updateList(){
-    if (this.newTitle.replace(/ /g,'') === ""){
-      this.newTitle = "Title";
+  updateList () {
+    if (this.newTitle.replace(/ /g, '') === '') {
+      this.newTitle = 'Title'
     }
-    this.title = this.newTitle;
-    if (this.newTimerTimeLimit <= 1){
-      this.newTimerTimeLimit = 30;
+    this.title = this.newTitle
+    if (this.newTimerTimeLimit <= 1) {
+      this.newTimerTimeLimit = 30
     }
-    this.timerTimeLimit = this.newTimerTimeLimit;
-    this.switchToList(this.addList(this.listId));
-    $("#editModal").modal("hide");
+    this.timerTimeLimit = this.newTimerTimeLimit
+    this.switchToList(this.addList(this.listId))
+    $('#editModal').modal('hide')
   }
 
-  switchToList(id: number){
-    this.listId = id;
-    localStorage.setItem("currentId",this.listId);
-    console.log("Switching to list " + this.listId);
-    this.totalListArr = JSON.parse(localStorage["listArr"]);
-    console.log(this.totalListArr);
-    let currentListArr = this.totalListArr[this.listId];
-    this.title = currentListArr["title"];
-    this.timerTimeLimit = currentListArr["timerTimeLimit"];
-    this.newTitle = this.title;
-    this.newTimerTimeLimit = this.timerTimeLimit;
-    this.delegateList = currentListArr["delegateList"];
-    this.resetTimer();
+  switchToList (id: number) {
+    this.listId = id
+    localStorage.setItem('currentId', this.listId)
+    console.log('Switching to list ' + this.listId)
+    this.totalListArr = JSON.parse(localStorage['listArr'])
+    console.log(this.totalListArr)
+    let currentListArr = this.totalListArr[this.listId]
+    this.title = currentListArr['title']
+    this.timerTimeLimit = currentListArr['timerTimeLimit']
+    this.newTitle = this.title
+    this.newTimerTimeLimit = this.timerTimeLimit
+    this.delegateList = currentListArr['delegateList']
+    this.resetTimer()
   }
 
-  deleteList(id: number){
-    let tempListArr;
-    tempListArr = JSON.parse(localStorage["listArr"])
-    tempListArr.splice(id,1)
-    this.totalListArr = tempListArr;
-    localStorage.setItem("listArr",JSON.stringify(tempListArr))
-    if (id == this.listId && tempListArr.length != 0){
+  deleteList (id: number) {
+    let tempListArr
+    tempListArr = JSON.parse(localStorage['listArr'])
+    tempListArr.splice(id, 1)
+    this.totalListArr = tempListArr
+    localStorage.setItem('listArr', JSON.stringify(tempListArr))
+    if (id === this.listId && tempListArr.length !== 0) {
       this.switchToList(0)
-    }
-    else if (id == this.listId){
-      this.newTitle = "Sample Caucas Topic";
-      this.newTimerTimeLimit = 30;
+    } else if (id === this.listId) {
+      this.newTitle = 'Sample Caucas Topic'
+      this.newTimerTimeLimit = 30
       this.createList()
     }
   }
 
-  deleteLists(){
-    localStorage.removeItem("currentId");
-    localStorage.removeItem("listArr")
+  deleteLists () {
+    localStorage.removeItem('currentId')
+    localStorage.removeItem('listArr')
   }
 
-  toggleTimer(){
-    if(this.timerOn) {
-      this.stopTimer();
+  toggleTimer () {
+    if (this.timerOn) {
+      this.stopTimer()
     } else {
-      this.startTimer();
+      this.startTimer()
     }
   }
 
-  startTimer() {
+  startTimer () {
     this.timerObject = setInterval(() => {
-      if (this.timerTime == 0){
-        this.timerAudio.play();
-        this.stopTimer();
+      if (this.timerTime === 0) {
+        this.timerAudio.play()
+        this.stopTimer()
+      } else {
+        this.timerTime--
       }
-      else{
-        this.timerTime --;
-      }
-    }, 1000);
-    this.timerOn = true;
+    }, 1000)
+    this.timerOn = true
   }
 
-  stopTimer() {
-    clearInterval(this.timerObject);
-    this.timerOn = false;
+  stopTimer () {
+    clearInterval(this.timerObject)
+    this.timerOn = false
   }
 
-  resetTimer(){
-    this.stopTimer();
-    this.timerTime = this.timerTimeLimit;
+  resetTimer () {
+    this.stopTimer()
+    this.timerTime = this.timerTimeLimit
   }
   /*
   setTimer(time: number){
@@ -353,55 +349,55 @@ export class ListsPageComponent implements OnInit,OnDestroy {
   }
   */
 
-  calculateTime(){
+  calculateTime () {
     let time = new Date()
-    this.currentTime = ("0" + time.getHours()).slice(-2)   + ":" + ("0" + time.getMinutes()).slice(-2)
+    this.currentTime = ('0' + time.getHours()).slice(-2) + ':' + ('0' + time.getMinutes()).slice(-2)
   }
 
-  addDelegate(delegate: string){
-    if (delegate.replace(/ /g,'') != ""){
+  addDelegate (delegate: string) {
+    if (delegate.replace(/ /g, '') !== '') {
       this.delegateList.push([delegate, false])
     }
-    $("#delegateInput").val("");
+    $('#delegateInput').val('')
     this.addList(this.listId)
   }
 
-  strikeDelegate(delegateId: number){
-    this.delegateList[delegateId][1] = !this.delegateList[delegateId][1];
+  strikeDelegate (delegateId: number) {
+    this.delegateList[delegateId][1] = !this.delegateList[delegateId][1]
     this.addList(this.listId)
   }
 
-  strikeAllDelegates(){
-    for (let i = 0; i < this.delegateList.length; i++){
-      this.delegateList[i][1] = 1;
+  strikeAllDelegates () {
+    for (let i = 0; i < this.delegateList.length; i++) {
+      this.delegateList[i][1] = 1
     }
     this.addList(this.listId)
   }
 
-  unstrikeAllDelegates(){
-    for (let i = 0; i < this.delegateList.length; i++){
-      this.delegateList[i][1] = 0;
+  unstrikeAllDelegates () {
+    for (let i = 0; i < this.delegateList.length; i++) {
+      this.delegateList[i][1] = 0
     }
     this.addList(this.listId)
   }
 
-  removeDelegate(delegateId: number){
+  removeDelegate (delegateId: number) {
     this.delegateList.splice(delegateId, 1)
     this.addList(this.listId)
   }
 
-  removeAllDelegates(){
+  removeAllDelegates () {
     this.delegateList = []
     this.addList(this.listId)
   }
 
-  ngOnInit() {
-    this.calculateTime();
+  ngOnInit () {
+    this.calculateTime()
     setInterval(() => {
       this.calculateTime()
-    }, 30000);
+    }, 30000)
   }
-  ngOnDestroy() {
+  ngOnDestroy () {
     this.addList(this.listId)
   }
 }

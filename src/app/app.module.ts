@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -5,14 +7,14 @@ import { FormsModule } from '@angular/forms';
 import { NgxElectronModule } from 'ngx-electron';
 import { NgxFsModule } from 'ngx-fs';
 
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component'
+import { AppRoutingModule } from './app-routing.module'
 
-import { HomePageComponent } from '../pages/home/home';
-import { GuidePageComponent } from '../pages/guide/guide';
-import { ListsPageComponent } from '../pages/lists/lists';
-import { SettingsPageComponent } from '../pages/settings/settings';
-import { PageNotFoundComponent } from '../pages/not-found/not-found';
+import { HomePageComponent } from '../pages/home/home'
+import { GuidePageComponent } from '../pages/guide/guide'
+import { ListsPageComponent } from '../pages/lists/lists'
+import { SettingsPageComponent } from '../pages/settings/settings'
+import { PageNotFoundComponent } from '../pages/not-found/not-found'
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -82,13 +84,13 @@ for (let i = 0; i < iconList.length; i++){
     NgxFsModule
   ],
   declarations: [
-    AppComponent,
-    HomePageComponent,
-    GuidePageComponent,
-    ListsPageComponent,
-    SettingsPageComponent,
-    PageNotFoundComponent
+  AppComponent,
+  HomePageComponent,
+  GuidePageComponent,
+  ListsPageComponent,
+  SettingsPageComponent,
+  PageNotFoundComponent
   ],
   bootstrap: [AppComponent]
-})
+  })
 export class AppModule { }

@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
-import { ElectronService } from 'ngx-electron';
-import { FsService } from 'ngx-fs';
+/* eslint-disable no-unused-vars, no-undef */
+
+import { Component } from '@angular/core'
+import { ElectronService } from 'ngx-electron'
+import { FsService } from 'ngx-fs'
 
 @Component({
   selector: 'page-settings',
@@ -92,35 +94,34 @@ import { FsService } from 'ngx-fs';
     </div>
   </div>
   `
-})
+  })
 
 export class SettingsPageComponent {
-
   appVersion: string;
   appPath: string;
   electronVersion: string;
   chromeVersion: string;
   nodeVersion: string;
 
-  constructor (private electronService: ElectronService, private fsService: FsService){
-    this.appVersion = this.electronService.remote.app.getVersion();
-    this.appPath = this.electronService.remote.app.getAppPath();
-    this.electronVersion = this.electronService.process.versions.electron;
-    this.chromeVersion = this.electronService.process.versions.chrome;
-    this.nodeVersion = this.electronService.process.versions.node;
+  constructor (private electronService: ElectronService, private fsService: FsService) {
+    this.appVersion = this.electronService.remote.app.getVersion()
+    this.appPath = this.electronService.remote.app.getAppPath()
+    this.electronVersion = this.electronService.process.versions.electron
+    this.chromeVersion = this.electronService.process.versions.chrome
+    this.nodeVersion = this.electronService.process.versions.node
 
     this.electronService.ipcRenderer.on('export-savefile', (event: any) => {
-      console.log(event);
-      this.exportList();
-    });
+      console.log(event)
+      this.exportList()
+    })
 
     this.electronService.ipcRenderer.on('import-savefile', (event: any) => {
-      console.log(event);
-      this.importList();
-    });
+      console.log(event)
+      this.importList()
+    })
   }
 
-  importList(){
+  importList () {
     let filepath = this.electronService.remote.dialog.showOpenDialog({
       properties: ['openFile', 'createDirectory'],
       filters: [
@@ -130,30 +131,29 @@ export class SettingsPageComponent {
         }
       ]
     })
-    if (filepath){
+    if (filepath) {
       let filepathStr = filepath[0]
       this.fsService.fs.readFile(filepathStr, 'utf8', (err: any, data: any) => {
-          if (err) {
-            let failureNotification = new Notification('Export Failed', {
-              body: 'Uh oh, file import has failed. Try again!'
-            })
-          }
-          else {
-            let dataJSON = JSON.parse(data)
-            console.log(dataJSON)
-            localStorage.setItem("currentId", dataJSON["appState"]["currentId"])
-            localStorage.setItem("listArr", JSON.stringify(dataJSON["listsArray"]))
-            let successNotification = new Notification('Export Successful', {
-              body: 'Great success! Your savefile has imported!'
-            })
-          }
-      });
+        if (err) {
+          let failureNotification = new Notification('Export Failed', {
+            body: 'Uh oh, file import has failed. Try again!'
+          })
+        } else {
+          let dataJSON = JSON.parse(data)
+          console.log(dataJSON)
+          localStorage.setItem('currentId', dataJSON['appState']['currentId'])
+          localStorage.setItem('listArr', JSON.stringify(dataJSON['listsArray']))
+          let successNotification = new Notification('Export Successful', {
+            body: 'Great success! Your savefile has imported!'
+          })
+        }
+      })
     }
   }
 
-  exportList(){
+  exportList () {
     let filepath = this.electronService.remote.dialog.showSaveDialog({
-      defaultPath: "fair-chair-savefile.json",
+      defaultPath: 'fair-chair-savefile.json',
       filters: [
         {
           name: 'JSON File',
@@ -161,39 +161,37 @@ export class SettingsPageComponent {
         }
       ]
     })
-    if (filepath){
+    if (filepath) {
       let constructedObject = {
         appState: {
-          currentId: localStorage["currentId"]
+          currentId: localStorage['currentId']
         },
-        listsArray: JSON.parse(localStorage["listArr"])
-      };
-      console.log(constructedObject);
+        listsArray: JSON.parse(localStorage['listArr'])
+      }
+      console.log(constructedObject)
       this.fsService.fs.writeFile(filepath, JSON.stringify(constructedObject), 'utf8', (err: any) => {
-        if (err){
+        if (err) {
           let failureNotification = new Notification('Export Failed', {
             body: 'Uh oh, file export has failed. Try again!'
           })
-        }
-        else{
+        } else {
           let successNotification = new Notification('Export Successful', {
             body: 'Great success! Your savefile has exported!'
           })
         }
-      });
+      })
     }
   }
 
-  deleteLocalStorage(){
-    localStorage.removeItem("currentId");
-    localStorage.removeItem("listArr")
+  deleteLocalStorage () {
+    localStorage.removeItem('currentId')
+    localStorage.removeItem('listArr')
     let successNotification = new Notification('All Data Deleted!', {
       body: 'Say your goodbyes, all your data is gone!'
     })
   }
 
-  openLink(link: string){
-    this.electronService.shell.openExternal(link);
+  openLink (link: string) {
+    this.electronService.shell.openExternal(link)
   }
-
 }

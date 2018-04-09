@@ -1,13 +1,13 @@
-import { app, BrowserWindow, Menu } from 'electron';
-//import { enableLiveReload } from 'electron-compile';
+import { app, BrowserWindow, Menu } from 'electron'
+// import { enableLiveReload } from 'electron-compile';
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow: Electron.BrowserWindow | null;
+let mainWindow: Electron.BrowserWindow | null
 
-const isDevMode = process.execPath.match(/[\\/]electron/);
+const isDevMode = process.execPath.match(/[\\/]electron/)
 
-//if (isDevMode) enableLiveReload();
+// if (isDevMode) enableLiveReload();
 
 const createWindow = async () => {
   // Create the browser window.
@@ -15,32 +15,32 @@ const createWindow = async () => {
     width: 1000,
     height: 800,
     icon: `file://${__dirname}/assets/img/fair-chair.ico`
-  });
+  })
 
   // and load the index.html of the app.
-  mainWindow.loadURL(`file://${__dirname}/index.html`);
+  mainWindow.loadURL(`file://${__dirname}/index.html`)
 
   // Open the DevTools, or set in full screen in prod.
   if (isDevMode) {
-    mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools()
   }
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
-    mainWindow = null;
-  });
-};
+    mainWindow = null
+  })
+}
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
-  createWindow();
+  createWindow()
   const menu = Menu.buildFromTemplate(template)
   Menu.setApplicationMenu(menu)
-});
+})
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
@@ -49,11 +49,10 @@ app.on('window-all-closed', () => {
 
   // Disabled because it causes problems with the toolbar
 
-  //if (process.platform !== 'darwin') {
-  app.quit();
-  //}
-});
-
+  // if (process.platform !== 'darwin') {
+  app.quit()
+  // }
+})
 
 // Disabled because it causes problems with the toolbar
 /*
@@ -70,23 +69,23 @@ app.on('activate', () => {
 // code. You can also put them in separate files and import them here.
 
 // This is the menu generation code
-let template: any;
+let template: any
 template = [
   {
     label: 'File',
     submenu: [
       {
         label: 'Import Savefile',
-        click() {
-          mainWindow.webContents.send('to-settings');
-          mainWindow.webContents.send('import-savefile');
+        click () {
+          mainWindow.webContents.send('to-settings')
+          mainWindow.webContents.send('import-savefile')
         }
       },
       {
         label: 'Export Savefile',
-        click() {
-          mainWindow.webContents.send('to-settings');
-          mainWindow.webContents.send('export-savefile');
+        click () {
+          mainWindow.webContents.send('to-settings')
+          mainWindow.webContents.send('export-savefile')
         }
       }
     ]
@@ -124,28 +123,28 @@ template = [
     submenu: [
       {
         label: 'Home',
-        click() {
-          mainWindow.webContents.send('to-home');
+        click () {
+          mainWindow.webContents.send('to-home')
         }
       },
       {
         label: 'Lists',
-        click() {
-          mainWindow.webContents.send('to-lists');
+        click () {
+          mainWindow.webContents.send('to-lists')
         }
       },
       {
         label: 'Guide',
-        click() {
-          mainWindow.webContents.send('to-guide');
+        click () {
+          mainWindow.webContents.send('to-guide')
         }
       },
       {
         label: 'Settings',
-        click() {
-          mainWindow.webContents.send('to-settings');
+        click () {
+          mainWindow.webContents.send('to-settings')
         }
-      },
+      }
     ]
   },
   {
@@ -160,11 +159,11 @@ template = [
     submenu: [
       {
         label: 'Learn More',
-        click() { require('electron').shell.openExternal('https://electronjs.org') }
+        click () { require('electron').shell.openExternal('https://electronjs.org') }
       },
       {
         label: 'GitHub Repository',
-        click() { require('electron').shell.openExternal('https://github.com/malsf21/fair-chair/') }
+        click () { require('electron').shell.openExternal('https://github.com/malsf21/fair-chair/') }
       }
     ]
   }
