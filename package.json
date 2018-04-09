@@ -10,8 +10,7 @@
     "make": "electron-forge make",
     "make-mas": "electron-forge make --platform=mas",
     "publish": "electron-forge publish",
-    "lint": "standard 'src/**/*.ts'",
-    "lint-fix": "standard 'src/**/*.ts' --fix"
+    "lint": "standard 'src/**/*.ts'"
   },
   "keywords": [],
   "author": {
