@@ -23,7 +23,10 @@ import { ElectronService } from 'ngx-electron';
         </p>
       </div>
       <div class="card-footer">
-        <button class="btn btn-success" (click)="toList()"><i class="fa fa-arrow-right"></i> Try Now</button>
+        <button class="btn btn-success" (click)="toList()">
+          <fa-icon [icon]="['fas', 'arrow-right']"></fa-icon>
+          Try Now
+        </button>
       </div>
     </div>
     <div class="card border-primary">
@@ -34,7 +37,10 @@ import { ElectronService } from 'ngx-electron';
         </p>
       </div>
       <div class="card-footer">
-        <button class="btn btn-primary" (click)="toGuide()"><i class="fa fa-graduation-cap"></i> Learn more</button>
+        <button class="btn btn-primary" (click)="toGuide()">
+          <fa-icon [icon]="['fas', 'graduation-cap']"></fa-icon>
+          Learn more
+        </button>
       </div>
     </div>
     <div class="card border-danger">
@@ -45,7 +51,10 @@ import { ElectronService } from 'ngx-electron';
         </p>
       </div>
       <div class="card-footer">
-        <button class="btn btn-danger" (click)="openLink('https://github.com/malsf21/fair-chair/')"><i class="fab fa-github"></i> GitHub Repository</button>
+        <button class="btn btn-danger" (click)="openLink('https://github.com/malsf21/fair-chair/')">
+          <fa-icon [icon]="['fab', 'github']"></fa-icon> 
+          GitHub Repository
+        </button>
       </div>
     </div>
   </div>

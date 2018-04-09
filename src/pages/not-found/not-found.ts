@@ -4,8 +4,13 @@ import { ElectronService } from 'ngx-electron';
 @Component({
   template: `
     <h2>Page not found</h2>
-    <p>This means that something went wrong. If you can, please submit an issue on our GitHub repository.</p>
-    <button class="btn btn-danger" (click)="openLink('https://github.com/malsf21/fair-chair/')"><i class="fab fa-github"></i> GitHub Repository</button>
+    <p>
+      This means that something went wrong. If you can, please submit an issue on our GitHub repository.
+    </p>
+    <button class="btn btn-danger" (click)="openLink('https://github.com/malsf21/fair-chair/')">
+      <fa-icon [icon]="['fab', 'github']"></fa-icon> 
+      GitHub Repository
+    </button>
   `
 })
 export class PageNotFoundComponent {

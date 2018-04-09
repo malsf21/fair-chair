@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-declare var $:JQueryStatic;
 
 @Component({
   selector: 'page-lists',
@@ -7,9 +6,18 @@ declare var $:JQueryStatic;
   <div class="list-view">
     <div class="row">
         <div class="col-9 mb-2 text-left">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#browseModal"><i class="fa fa-list"></i> Browse</button>
-          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i> Edit</button>
-          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#newModal"><i class="fa fa-plus"></i> New</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#browseModal">
+            <fa-icon [icon]="['fas', 'list']"></fa-icon>
+            Browse
+          </button>
+          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal">
+            <fa-icon [icon]="['fas', 'edit']"></fa-icon>
+            Edit
+          </button>
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#newModal">
+            <fa-icon [icon]="['fas', 'plus']"></fa-icon>
+            New
+          </button>
         </div>
       <div class="col-3 text-right">
         <h2>{{ currentTime }}</h2>
@@ -30,10 +38,12 @@ declare var $:JQueryStatic;
           <div class="card-body text-center">
             <h1 class="display-4">{{ timerTime }}s</h1>
             <button type="button" class="btn" [ngClass]="{'btn-success': !timerOn, 'btn-warning': timerOn }" (click)="toggleTimer()">
-            <span [hidden]="timerOn"><i class="fa fa-play"></i></span>
-            <span [hidden]="!timerOn"><i class="fa fa-pause"></i></span>
+            <span [hidden]="timerOn"><fa-icon [icon]="['fas', 'play']"></fa-icon></span>
+            <span [hidden]="!timerOn"><fa-icon [icon]="['fas', 'pause']"></fa-icon></span>
             </button>
-            <button type="button" class="btn btn-danger" (click)="resetTimer()"><i class="fa fa-redo"></i></button>
+            <button type="button" class="btn btn-danger" (click)="resetTimer()">
+              <fa-icon [icon]="['fas', 'redo']"></fa-icon>
+            </button>
           </div>
         </div>
       </div>
@@ -46,9 +56,15 @@ declare var $:JQueryStatic;
             <th>#</th>
             <th>Delegate</th>
             <th class="text-right">
-              <button class="btn btn-warning btn-sm" (click)="unstrikeAllDelegates()"><i class="fa fa-ban"></i></button>
-              <button class="btn btn-success btn-sm" (click)="strikeAllDelegates()"><i class="fa fa-strikethrough"></i></button>
-              <button class="btn btn-danger btn-sm" (click)="removeAllDelegates()"><i class="fa fa-times"></i></button>
+              <button class="btn btn-warning btn-sm" (click)="unstrikeAllDelegates()">
+                <fa-icon [icon]="['fas', 'ban']"></fa-icon>
+              </button>
+              <button class="btn btn-success btn-sm" (click)="strikeAllDelegates()">
+                <fa-icon [icon]="['fas', 'strikethrough']"></fa-icon>
+              </button>
+              <button class="btn btn-danger btn-sm" (click)="removeAllDelegates()">
+                <fa-icon [icon]="['fas', 'times']"></fa-icon>
+              </button>
             </th>
           </tr>
         </thead>
@@ -57,8 +73,12 @@ declare var $:JQueryStatic;
             <td [ngClass]="{'strikethrough': delegate[1]}">{{ i + 1 }}</td>
             <td [ngClass]="{'strikethrough': delegate[1]}">{{ delegate[0] }}</td>
             <td class="text-right">
-              <button class="btn btn-success btn-sm" (click)="strikeDelegate(i)"><i class="fa fa-strikethrough"></i></button>
-              <button class="btn btn-danger btn-sm" (click)="removeDelegate(i)"><i class="fa fa-times"></i></button>
+              <button class="btn btn-success btn-sm" (click)="strikeDelegate(i)">
+                <fa-icon [icon]="['fas', 'strikethrough']"></fa-icon>
+              </button>
+              <button class="btn btn-danger btn-sm" (click)="removeDelegate(i)">
+                <fa-icon [icon]="['fas', 'times']"></fa-icon>
+              </button>
             </td>
           </tr>
         </tbody>
@@ -67,8 +87,8 @@ declare var $:JQueryStatic;
   </div>
   <div class="list-input-footer row">
     <div class="input-group">
-      <div class="input-group-addon"><i class="fa fa-user"></i></div>
-      <input type="text" (keyup.enter)="addDelegate(delegateInput.value)" class="form-control list-input-text" placeholder="Add delegate..." id="delegateInput" #delegateInput>
+      <div class="input-group-addon"><fa-icon [icon]="['fas', 'user']"></fa-icon></div>
+      <input type="text" (keyup.enter)="addDelegate(delegateInput.value)" class="form-control list-input-text" placeholder="Add delegate..." id="delegateInput" #delegateInput />
     </div>
   </div>
   <div class="modal fade" id="browseModal" tabindex="-1" role="dialog" aria-labelledby="browseModalLabel" aria-hidden="true">
@@ -97,8 +117,12 @@ declare var $:JQueryStatic;
                 <td>{{ list.timerTimeLimit }}</td>
                 <td>{{ list.delegateList.length }}</td>
                 <td class="text-right">
-                  <button class="btn btn-primary btn-sm" (click)="switchToList(i)"><i class="fa fa-sign-in-alt"></i></button>
-                  <button class="btn btn-danger btn-sm" (click)="deleteList(i)"><i class="fa fa-times"></i></button>
+                  <button class="btn btn-primary btn-sm" (click)="switchToList(i)">
+                    <fa-icon [icon]="['fas', 'exchange-alt']"></fa-icon>
+                  </button>
+                  <button class="btn btn-danger btn-sm" (click)="deleteList(i)">
+                    <fa-icon [icon]="['fas', 'times']"></fa-icon>
+                  </button>
                 </td>
               </tr>
             </tbody>

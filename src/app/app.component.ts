@@ -16,35 +16,45 @@ import { ElectronService } from 'ngx-electron';
         <ul class="nav nav-pills flex-column sidebar-nav" id="mainNav" role="tablist">
           <li class="nav-item">
             <a class="nav-link active" routerLink="/home-page" routerLinkActive="active">
-              <i class="fa fa-fw fa-home"></i> Home
+              <fa-icon [icon]="['fas', 'home']" [fixedWidth]="true"></fa-icon> Home
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/lists-page" routerLinkActive="active">
-              <i class="fa fa-fw fa-list"></i> Lists
+              <fa-icon [icon]="['fas', 'list']" [fixedWidth]="true"></fa-icon> Lists
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/guide-page" routerLinkActive="active">
-              <i class="fa fa-fw fa-book"></i> Guide
+              <fa-icon [icon]="['fas', 'book']" [fixedWidth]="true"></fa-icon> Guide
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/settings-page" routerLinkActive="active">
-              <i class="fa fa-fw fa-cog"></i> Settings
+              <fa-icon [icon]="['fas', 'cog']" [fixedWidth]="true"></fa-icon> Settings
             </a>
           </li>
         </ul>
         <div class="sidebar-footer">
-          <i class="fa fa-fw fa-code"></i> <i class="fa fa-fw fa-heart" style="color:tomato;"></i> <a (click)="openLink('https://github.com/malsf21/fair-chair/')"><i class="fab fa-fw fa-github"></i></a> <span (click)="openLink('https://matthewwang.me')"><u>by Matthew Wang</u></span>
+          <fa-icon [icon]="['fas', 'code']"></fa-icon>
+          <fa-icon [icon]="['fas', 'heart']" style="color:tomato"></fa-icon>
+          <a (click)="openLink('https://github.com/malsf21/fair-chair/')">
+            <fa-icon [icon]="['fab', 'github']"></fa-icon>
+          </a>
+          <span (click)="openLink('https://matthewwang.me')"><u>by Matthew Wang</u>
+          </span>
         </div>
       </nav>
       <main role="main" [ngClass]="{'col-10': showSidebar, 'col-12': !showSidebar }" class="mt-3 app-main">
       <a class="sidebar-toggle-button" (click)="toggleSidebar()">
-        <div [hidden]="!showSidebar"><i class="fa fa-2x fa-caret-left" style="color:white;"></i></div>
-        <div [hidden]="showSidebar"><i class="fa fa-2x fa-caret-right"></i></div>
+        <div [hidden]="!showSidebar">
+          <fa-icon [icon]="['fas', 'caret-left']" style="color:white;" size="2x"></fa-icon>
+        </div>
+        <div [hidden]="showSidebar">
+          <fa-icon [icon]="['fas', 'caret-right']" size="2x"></fa-icon>
+        </div>
       </a>
-        <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
       </main>
     </div>
   </div>
