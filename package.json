@@ -10,7 +10,7 @@
     "make": "electron-forge make",
     "make-mas": "electron-forge make --platform=mas",
     "publish": "electron-forge publish",
-    "lint": "tslint src"
+    "lint": "standard $(find . -name '*.ts' -not -iwholename './node_modules/*')"
   },
   "keywords": [],
   "author": {
@@ -20,6 +20,12 @@
   },
   "repository": "https://github.com/malsf21/fair-chair",
   "license": "MIT",
+  "standard": {
+    "parser": "typescript-eslint-parser",
+    "plugins": [
+      "typescript"
+    ]
+  },
   "config": {
     "forge": {
       "make_targets": {
@@ -83,7 +89,9 @@
     "babel-preset-react": "^6.24.1",
     "electron-forge": "^5.1.1",
     "electron-prebuilt-compile": "1.8.4",
-    "tslint": "^4.2.0",
-    "typescript": "~2.1.4"
+    "eslint-plugin-typescript": "^0.11.0",
+    "standard": "^11.0.1",
+    "typescript": "~2.1.4",
+    "typescript-eslint-parser": "^14.0.0"
   }
 }

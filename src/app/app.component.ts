@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { ElectronService } from 'ngx-electron';
+/* eslint-disable no-unused-vars, no-undef */
+
+import { Component } from '@angular/core'
+import { ElectronService } from 'ngx-electron'
 
 @Component({
   selector: 'app-root',
@@ -49,16 +51,16 @@ import { ElectronService } from 'ngx-electron';
     </div>
   </div>
   `
-})
+  })
 export class AppComponent {
   showSidebar: boolean;
-  constructor (private electronService: ElectronService){
-    this.showSidebar = true;
+  constructor (private electronService: ElectronService) {
+    this.showSidebar = true
   }
-  toggleSidebar(){
-    this.showSidebar = !this.showSidebar;
+  toggleSidebar () {
+    this.showSidebar = !this.showSidebar
   }
-  openLink(link: string){
-    this.electronService.shell.openExternal(link);
+  openLink (link: string) {
+    this.electronService.shell.openExternal(link)
   }
 }
