@@ -13,11 +13,17 @@ import { FsService } from 'ngx-fs'
       <hr />
       <div class="row">
         <div class="col">
-          <h2>Import/Export Saves</h2>
+          <h2>Save/Load</h2>
         </div>
         <div class="col text-right">
-          <button class="btn btn-primary" (click)="importList()"><i class="fa fa-download"></i> Import Lists</button>
-          <button class="btn btn-primary" (click)="exportList()"><i class="fa fa-upload"></i> Export Lists</button>
+          <button class="btn btn-primary" (click)="exportList()">
+            <fa-icon [icon]="['fas', 'save']"></fa-icon>
+            Save Lists
+          </button>
+          <button class="btn btn-primary" (click)="importList()">
+            <fa-icon [icon]="['fas', 'folder-open']"></fa-icon>
+            Load Lists
+          </button>
         </div>
       </div>
       <hr />
@@ -26,7 +32,10 @@ import { FsService } from 'ngx-fs'
           <h2>Clear LocalStorage</h2>
         </div>
         <div class="col text-right">
-          <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-times"></i> Clear All Data</button>
+          <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+            <fa-icon [icon]="['fas', 'times']"></fa-icon>
+            Clear All Data
+          </button>
         </div>
       </div>
     </div>
