@@ -10,7 +10,7 @@ import { ElectronService } from 'ngx-electron'
       This means that something went wrong. If you can, please submit an issue on our GitHub repository.
     </p>
     <button class="btn btn-danger" (click)="openLink('https://github.com/malsf21/fair-chair/')">
-      <fa-icon [icon]="['fab', 'github']"></fa-icon> 
+      <fa-icon [icon]="['fab', 'github']"></fa-icon>
       GitHub Repository
     </button>
   `
