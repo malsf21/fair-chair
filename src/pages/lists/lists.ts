@@ -276,7 +276,7 @@ export class ListsPageComponent implements OnInit, OnDestroy {
     }
     this.timerTimeLimit = this.newTimerTimeLimit
     this.switchToList(this.addList(this.listId))
-    $('#editModal').modal('hide')
+    // $('#editModal').modal('hide') // FIXME
   }
 
   switchToList (id: number) {

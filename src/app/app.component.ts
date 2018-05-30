@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars, no-undef */
 
 import { Component } from '@angular/core'
-import { ElectronService } from 'ngx-electron'
 
 @Component({
   selector: 'app-root',
@@ -64,13 +63,13 @@ import { ElectronService } from 'ngx-electron'
   })
 export class AppComponent {
   showSidebar: boolean;
-  constructor (private electronService: ElectronService) {
+  constructor () {
     this.showSidebar = true
   }
   toggleSidebar () {
     this.showSidebar = !this.showSidebar
   }
-  openLink (link: string) {
-    this.electronService.shell.openExternal(link)
+  openLink () {
+    console.log('openLink stub')
   }
 }

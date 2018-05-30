@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars, no-undef */
 
 import { Component } from '@angular/core'
-import { ElectronService } from 'ngx-electron'
 
 @Component({
   template: `
@@ -16,7 +15,7 @@ import { ElectronService } from 'ngx-electron'
   `
   })
 export class PageNotFoundComponent {
-  openLink (link: string) {
-    this.electronService.shell.openExternal(link)
+  openLink () {
+    // this.electronService.shell.openExternal(link)
   }
 }

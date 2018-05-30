@@ -5,12 +5,10 @@
   "description": "Fair Chair, a desktop application that making chairing Model United Nations committees easy.",
   "main": "src/index.ts",
   "scripts": {
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "make-mas": "electron-forge make --platform=mas",
-    "publish": "electron-forge publish",
-    "lint": "standard 'src/**/*.ts'"
+    "start": "webpack-dev-server --inline --port 8080",
+    "build": "webpack",
+    "test": "exit 0",
+    "lint": "standard src/*.ts src/**/*.ts src/**/**/*.ts"
   },
   "keywords": [],
   "author": {
@@ -29,48 +27,11 @@
       "typescript"
     ]
   },
-  "config": {
-    "forge": {
-      "make_targets": {
-        "win32": [
-          "squirrel"
-        ],
-        "darwin": [
-          "zip"
-        ],
-        "linux": [
-          "deb"
-        ]
-      },
-      "electronPackagerConfig": {
-        "packageManager": "npm",
-        "icon": "src/assets/img/fair-chair.icns",
-        "ignore": ".+.o$",
-        "appBundleId": "me.matthewwang.fair-chair",
-        "helperBundleId": "me.matthewwang.fair-chair.helper",
-        "buildVersion": "1.0.100"
-      },
-      "electronWinstallerConfig": {
-        "name": "fair_chair"
-      },
-      "electronInstallerDebian": {},
-      "github_repository": {
-        "owner": "malsf21",
-        "name": "fair-chair"
-      },
-      "windowsStoreConfig": {
-        "packageName": "",
-        "name": "fairchair"
-      }
-    }
-  },
   "dependencies": {
-    "@angular/animations": "^5.2.8",
     "@angular/common": "^5.2.8",
     "@angular/compiler": "^5.2.8",
     "@angular/core": "^5.2.8",
     "@angular/forms": "^5.2.8",
-    "@angular/http": "^5.2.8",
     "@angular/platform-browser": "^5.2.8",
     "@angular/platform-browser-dynamic": "^5.2.8",
     "@angular/router": "^5.2.8",
@@ -78,28 +39,27 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.0-10",
     "@fortawesome/free-brands-svg-icons": "^5.1.0-4",
     "@fortawesome/free-solid-svg-icons": "^5.1.0-4",
-    "core-js": "^2.4.1",
-    "electron-compile": "^6.4.2",
-    "electron-devtools-installer": "^2.1.0",
-    "electron-squirrel-startup": "^1.0.0",
-    "ngx-electron": "^1.0.4",
-    "ngx-fs": "0.0.1",
-    "reflect-metadata": "^0.1.9",
     "rxjs": "^5.5.6",
-    "tslib": "^1.4.0",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
     "@types/jquery": "^3.3.1",
+    "angular2-template-loader": "^0.6.2",
+    "awesome-typescript-loader": "^5.0.0",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
-    "electron-forge": "^5.1.1",
-    "electron-prebuilt-compile": "1.8.4",
+    "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
     "eslint-plugin-typescript": "^0.11.0",
+    "file-loader": "^1.1.11",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.4.0",
     "standard": "^11.0.1",
     "typescript": "~2.7.1",
-    "typescript-eslint-parser": "^14.0.0"
+    "typescript-eslint-parser": "^14.0.0",
+    "webpack": "^4.10.1",
+    "webpack-command": "^0.2.0"
   }
 }

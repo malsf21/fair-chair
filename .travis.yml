@@ -1,3 +1,4 @@
+# Gitter
 notifications:
   email:
     on_success: never
@@ -9,35 +10,26 @@ notifications:
     on_failure: always
     on_start:   never
 
-os: osx
+dist: trusty
 
 language: node_js
-node_js: 8
+node_js: 10
 
 install:
-  - npm install
+  - npm i
 
 stages:
   - lint
+  - build
   - test
-  - name: deploy
-    if: branch = stable
 
 jobs:
   include:
     - stage: lint
-      node_js: 8
       script: npm run lint
 
-    - stage: test
-      node_js: 8
-      script: npm run make
-      
-    - # This next job runs w/ test
-      node_js: 8
-      script: npm run make-mas
+    - stage: build
+      script: npm run build
 
-    - stage: deploy
-      if: branch = stable
-      node_js: 8
-      script: npm run publish
+    - stage: test
+      script: npm test

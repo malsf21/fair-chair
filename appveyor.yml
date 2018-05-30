@@ -1,23 +1,14 @@
-platform:
-  - x64
+environment:
+  nodejs_version: "10"
 
 install:
-  - ps: Install-Product node 8 x64
-  - npm install -g electron-forge
-  - npm install
+  - ps: Install-Product node $env:nodejs_version
+  - npm i
 
-for:
--
-  branches:
-    only:
-      - stable
+build_script:
+  - npm run build
 
-  configuration: Release
-  build_script:
-    - npm run publish
--
-  configuration: Debug
-  build_script:
-    - npm run make
-
-test: off
+test_script:
+  - node --version
+  - npm --version
+  - npm test

@@ -2,7 +2,6 @@
 
 import { Component, NgZone } from '@angular/core'
 import { Router } from '@angular/router'
-import { ElectronService } from 'ngx-electron'
 
 @Component({
   selector: 'page-home',
@@ -64,23 +63,23 @@ import { ElectronService } from 'ngx-electron'
   })
 
 export class HomePageComponent {
-  constructor (private router: Router, private electronService: ElectronService, private zone: NgZone) {
-    this.electronService.ipcRenderer.on('to-home', (event: any) => {
-      console.log(event)
-      this.toHome()
-    })
-    this.electronService.ipcRenderer.on('to-lists', (event: any) => {
-      console.log(event)
-      this.toList()
-    })
-    this.electronService.ipcRenderer.on('to-guide', (event: any) => {
-      console.log(event)
-      this.toGuide()
-    })
-    this.electronService.ipcRenderer.on('to-settings', (event: any) => {
-      console.log(event)
-      this.toSettings()
-    })
+  constructor (private router: Router, private zone: NgZone) {
+    // this.electronService.ipcRenderer.on('to-home', (event: any) => {
+    //   console.log(event)
+    //   this.toHome()
+    // })
+    // this.electronService.ipcRenderer.on('to-lists', (event: any) => {
+    //   console.log(event)
+    //   this.toList()
+    // })
+    // this.electronService.ipcRenderer.on('to-guide', (event: any) => {
+    //   console.log(event)
+    //   this.toGuide()
+    // })
+    // this.electronService.ipcRenderer.on('to-settings', (event: any) => {
+    //   console.log(event)
+    //   this.toSettings()
+    // })
   }
 
   toHome () {
@@ -99,7 +98,7 @@ export class HomePageComponent {
     this.zone.run(() => this.router.navigate(['/settings-page']))
   }
 
-  openLink (link: string) {
-    this.electronService.shell.openExternal(link)
+  openLink () {
+    // this.electronService.shell.openExternal(link)
   }
 }
