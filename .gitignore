@@ -4,3 +4,4 @@ out
 entitlements.plist
 *.dmg
 *.zip
+.DS_Store
