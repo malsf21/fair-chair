@@ -7,6 +7,8 @@
 
 > Making chairing Model UN conferences easy and fair
 
+*Attention*: This app is in development limbo - but might get reworked eventually, as it definitely has some janky code. Still, the final product should be usable.
+
 Fair Chair is a desktop app that's designed to make chairing easy and fair. At its core, it's just a glorified table, but the many subtle features it has makes it a prime choice for chairing. It features a robust list manager (saves the states of several lists automatically), coordinates the timer state with each individual list, and has many simple one-button interactions that make life easy.
 
 You can download it from [the website](https://malsf21.github.io/fair-chair/) or from the [Mac App Store](https://itunes.apple.com/us/app/fair-chair/id1365686846).
@@ -15,7 +17,7 @@ From a technical perspective, Fair Chair is an [Electron](https://electronjs.org
 
 ## Development Setup
 
-This project is an Angular 5 flavour of the [Electron Forge](https://github.com/electron-userland/electron-forge/) template - as such, you can use any of Electron Forge's default commands to run, build, and package the project.
+This project is an Angular 7 flavour of the [Electron Forge](https://github.com/electron-userland/electron-forge/) template - as such, you can use any of Electron Forge's default commands to run, build, and package the project.
 
 First, install the Electron Forge CLI
 

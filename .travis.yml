@@ -12,7 +12,7 @@ notifications:
 os: osx
 
 language: node_js
-node_js: 8
+node_js: 10
 
 install:
   - npm install
@@ -26,18 +26,18 @@ stages:
 jobs:
   include:
     - stage: lint
-      node_js: 8
+      node_js: 10
       script: npm run lint
 
     - stage: test
-      node_js: 8
+      node_js: 10
       script: npm run make
       
     - # This next job runs w/ test
-      node_js: 8
+      node_js: 10
       script: npm run make-mas
 
     - stage: deploy
       if: branch = stable
-      node_js: 8
+      node_js: 10
       script: npm run publish

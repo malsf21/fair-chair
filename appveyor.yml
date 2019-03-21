@@ -2,7 +2,7 @@ platform:
   - x64
 
 install:
-  - ps: Install-Product node 8 x64
+  - ps: Install-Product node 10 x64
   - npm install -g electron-forge
   - npm install
 
@@ -20,4 +20,4 @@ for:
   build_script:
     - npm run make
 
-test: off
+test: "off"
