@@ -9,6 +9,8 @@
 
 *Attention*: This app is in development limbo - but might get reworked eventually, as it definitely has some janky code. Still, the final product should be usable.
 
+(For reference, Matt is currently waiting on a major release from `electron-forge`; he'll probably then rewrite this as a simple React + Electron app. Or it could just be a web app!)
+
 Fair Chair is a desktop app that's designed to make chairing easy and fair. At its core, it's just a glorified table, but the many subtle features it has makes it a prime choice for chairing. It features a robust list manager (saves the states of several lists automatically), coordinates the timer state with each individual list, and has many simple one-button interactions that make life easy.
 
 You can download it from [the website](https://malsf21.github.io/fair-chair/) or from the [Mac App Store](https://itunes.apple.com/us/app/fair-chair/id1365686846).
